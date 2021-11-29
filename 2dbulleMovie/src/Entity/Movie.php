@@ -37,6 +37,17 @@ class Movie
      */
     private $updatedAt;
 
+    public function __construct()
+    {
+        $this->createdAt = new \DateTimeImmutable();
+    }
+
+    // cette méthode permet de définir le comportement à adopter lorsque l'objet est traité comme une chaine de caractère
+    public function __toString()
+    {   
+        return $this->title;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
