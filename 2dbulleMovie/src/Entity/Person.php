@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PersonRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -32,9 +34,15 @@ class Person
      */
     private $updatedAt;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Casting::class, mappedBy="person")
+     */
+    private $castings;
+
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();
+        $this->castings = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -74,6 +82,33 @@ class Person
     public function setUpdatedAt(?\DateTimeImmutable $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Casting[]
+     */
+    public function getCastings(): Collection
+    {
+        return $this->castings;
+    }
+
+    public function addCasting(Casting $casting): self
+    {
+        if (!$this->castings->contains($casting)) {
+            $this->castings[] = $casting;
+            $casting->addPerson($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCasting(Casting $casting): self
+    {
+        if ($this->castings->removeElement($casting)) {
+            $casting->removePerson($this);
+        }
 
         return $this;
     }
