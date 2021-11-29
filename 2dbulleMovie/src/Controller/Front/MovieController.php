@@ -17,7 +17,7 @@ class MovieController extends AbstractController
         ]);
     }
 
-    #[Route('/id', name: 'movie_show', requirements: ['id=d\d+'], methods:['GET'])]
+    #[Route('/id', name: 'movie_show', methods:['GET'])]
     public function show($id, MovieRepository $movieRepo): Response
     {
         // récupérer une instance de movieRepository
