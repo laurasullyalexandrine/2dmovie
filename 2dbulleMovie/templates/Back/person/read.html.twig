@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ person.name }}{% endblock %}
+{% block menu_person %} active {% endblock %}
+{% block body %}
+
+<section>
+    <div class="home-bloc-movie-picture-show">
+    <div class="home-bloc-movie-information-show">
+        <h1> Acteur/Actrice : {{ person.name }}</h1>
+
+<h2>Liste des roles associés </h2>
+{% for casting in  person.castings %}
+
+<li class="admin-list">{{ casting.role }} </li>
+<i>(TODO: méthode custom pour y associer les films)</i> 
+{% endfor %}
+{# afficher la liste des movies associer au genre (movie.id) et movie.title #}
+
+
+                <div class="admin-footer">
+                    <a class="nav_admin"href="{{ path('admin_person') }}"><button class="submit">Retour</button></a>
+                    <a class="nav_admin"href="{{ path('admin_person_edit', {id : person.id}) }}"><button class="submit">Editer</button></a>
+                    <a class="nav_admin"href="{{ path('admin_person_delete', {id : person.id}) }}"><button class="submit">Supprimer</button></a>
+                </div>
+            
+            </div>
+     </div>
+</section>
+{% endblock %}

@@ -23,7 +23,7 @@ class Casting
     private $role;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $creditOrder;
 
@@ -37,6 +37,10 @@ class Casting
      */
     private $updatedAt;
 
+    public function __construct()
+    {
+        $this->createdAt = new \DateTimeImmutable();
+    }
 
     public function getId(): ?int
     {
@@ -60,7 +64,7 @@ class Casting
         return $this->creditOrder;
     }
 
-    public function setCreditOrder(int $creditOrder): self
+    public function setCreditOrder(?int $creditOrder): self
     {
         $this->creditOrder = $creditOrder;
 

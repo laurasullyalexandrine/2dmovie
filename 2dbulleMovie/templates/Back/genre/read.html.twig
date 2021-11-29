@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails des genres{% endblock %}
+{% block menu_genre %} active {% endblock %}
+{% block body %}
+
+<section>
+    <div class="home-bloc-movie-picture-show">
+    <div class="home-bloc-movie-information-show">
+        <h1> Genre : {{genre.name}}</h1>
+
+<h2>Liste des films associés </h2>
+
+{% for movie in genre.movies %}
+
+<li class="admin-list">{{ movie.title }}</li>
+{# afficher la liste des movies associer au genre (movie.id) et movie.title #}
+ {% endfor %} 
+                <div class="admin-footer">
+                    <a class="nav_admin" href="{{ path('admin_genre') }}"><button class="submit">Retour</button></a>
+                    <a class="nav_admin" href="{{ path('admin_genre_edit', {id : genre.id}) }}"><button class="submit">Editer</button></a>
+                    <a class="nav_admin" href="{{ path('admin_genre_delete', {id : genre.id}) }}"><button class="submit">Supprimer</button></a>
+                </div>
+            
+            </div>
+     </div>
+</section>
+{% endblock %}
