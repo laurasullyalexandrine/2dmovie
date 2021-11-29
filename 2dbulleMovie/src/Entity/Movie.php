@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\MovieRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -37,9 +39,21 @@ class Movie
      */
     private $updatedAt;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Genre::class, inversedBy="movies")
+     */
+    private $genres;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Casting::class, mappedBy="movie")
+     */
+    private $castings;
+
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();
+        $this->genres = new ArrayCollection();
+        $this->castings = new ArrayCollection();
     }
 
     // cette méthode permet de définir le comportement à adopter lorsque l'objet est traité comme une chaine de caractère
@@ -97,6 +111,60 @@ class Movie
     public function setUpdatedAt(?\DateTimeImmutable $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Genre[]
+     */
+    public function getGenres(): Collection
+    {
+        return $this->genres;
+    }
+
+    public function addGenre(Genre $genre): self
+    {
+        if (!$this->genres->contains($genre)) {
+            $this->genres[] = $genre;
+        }
+
+        return $this;
+    }
+
+    public function removeGenre(Genre $genre): self
+    {
+        $this->genres->removeElement($genre);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Casting[]
+     */
+    public function getCastings(): Collection
+    {
+        return $this->castings;
+    }
+
+    public function addCasting(Casting $casting): self
+    {
+        if (!$this->castings->contains($casting)) {
+            $this->castings[] = $casting;
+            $casting->setMovie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCasting(Casting $casting): self
+    {
+        if ($this->castings->removeElement($casting)) {
+            // set the owning side to null (unless already changed)
+            if ($casting->getMovie() === $this) {
+                $casting->setMovie(null);
+            }
+        }
 
         return $this;
     }

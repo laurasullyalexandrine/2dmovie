@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CastingRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -37,9 +39,20 @@ class Casting
      */
     private $updatedAt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Movie::class, inversedBy="castings")
+     */
+    private $movie;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Person::class, inversedBy="castings")
+     */
+    private $person;
+
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();
+        $this->person = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -91,6 +104,42 @@ class Casting
     public function setUpdatedAt(?\DateTimeImmutable $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getMovie(): ?Movie
+    {
+        return $this->movie;
+    }
+
+    public function setMovie(?Movie $movie): self
+    {
+        $this->movie = $movie;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Person[]
+     */
+    public function getPerson(): Collection
+    {
+        return $this->person;
+    }
+
+    public function addPerson(Person $person): self
+    {
+        if (!$this->person->contains($person)) {
+            $this->person[] = $person;
+        }
+
+        return $this;
+    }
+
+    public function removePerson(Person $person): self
+    {
+        $this->person->removeElement($person);
 
         return $this;
     }
