@@ -82,6 +82,25 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return array_unique($roles);
     }
 
+    /**
+     * @see UserInterface
+     * on ne peut pas passer par la variable app.user pour afficher le rôle car c'est un array 
+     * alors il faut créér une fonction qui parcourera ce tableau pour afficher le rôle en fonction du user connecté.
+     */
+    public function getDisplayRole(): string
+    {
+        if (in_array("ROLE_ADMIN", $this->roles))
+        {
+            return "Administrateur";
+        }
+        else 
+        {
+            return "Utilisateur";   
+        }
+
+        return "";
+    }
+
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
