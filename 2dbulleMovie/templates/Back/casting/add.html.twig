@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout Casting{% endblock %}
+
+{% block body %}
+<h1>Ajout d'un casting</h1>
+
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    {{ form_errors(form) }}
+
+    {{ form_row(form.role) }}
+    {{ form_row(form.creditOrder) }}
+
+    {{ form_row(form.createdAt) }}
+    {{ form_row(form.updatedAt) }}
+
+    {{ form_row(form.person) }}
+    {{ form_row(form.movie) }}
+    
+    {{ form_row(form.send) }}
+
+{{ form_end(form) }}
+
+{% endblock %}
