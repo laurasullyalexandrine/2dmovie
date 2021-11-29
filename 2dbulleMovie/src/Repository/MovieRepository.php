@@ -19,6 +19,64 @@ class MovieRepository extends ServiceEntityRepository
         parent::__construct($registry, Movie::class);
     }
 
+    public function findOneWithGenre($id): ?Movie
+    {
+        // Le LEFT JOIN permet de conserver les films même s'il n'y a pas de genre associé
+        // Le (INNER) JOIN ne récupère les films avec un ou des genre(s) associé(s)
+        $em = $this->getEntityManager();
+        $query = $em->createQuery("
+            SELECT m, g, c, p
+            FROM App\Entity\Movie m
+            LEFT JOIN m.genres g
+            LEFT JOIN m.castings c
+            LEFT JOIN c.person p
+            WHERE m.id = :id
+            ORDER BY m.title DESC 
+            ");
+            
+            $query->setParameter(':id', $id);
+
+
+        // version avec le queryBuilder
+        //$qb = $this->createQueryBuilder('m');
+        //$qb->addSelect('g');
+        //$qb->join('m.genres', 'g');
+
+        //$qb->addSelect('c');
+        //$qb->join('m.castings', 'c');
+
+        //$qb->addSelect('p');
+        //$qb->join('c.person', 'p');
+
+        //$qb->andWhere('m.id = :id');
+        
+        //$qb->setParameter(':id', $id);
+
+        //$query = $qb->getQuery();
+
+        // cette méthode permet de renvoyer un objet ou null si rien n'a été trouvé
+       return $query->getOneOrNullResult();
+    }
+
+    public function findAllOrderedDQL()
+    {
+        // // on récupère un objet query Builder
+        // $qb = $this->createQueryBuilder('m');
+        // // on précise les spécificités de la requête
+        // $qb->orderBy('m.title', 'ASC');
+        // // on récupère un objet query
+        // $query = $qb->getQuery();
+        // // on renvoit les résultats de la requête
+        // return $query->getResult();
+
+        // le tout en "une" ligne
+        return $this->createQueryBuilder('m') 
+            ->orderBy('m.title', 'ASC')
+            ->getQuery()
+            ->getResult();
+       
+    }
+
     // /**
     //  * @return Movie[] Returns an array of Movie objects
     //  */
