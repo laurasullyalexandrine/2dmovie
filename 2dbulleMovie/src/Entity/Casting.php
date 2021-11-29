@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\PersonRepository;
+use App\Repository\CastingRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=PersonRepository::class)
+ * @ORM\Entity(repositoryClass=CastingRepository::class)
  */
-class Person
+class Casting
 {
     /**
      * @ORM\Id
@@ -20,7 +20,12 @@ class Person
     /**
      * @ORM\Column(type="string", length=128)
      */
-    private $name;
+    private $role;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $creditOrder;
 
     /**
      * @ORM\Column(type="datetime_immutable")
@@ -42,14 +47,26 @@ class Person
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getRole(): ?string
     {
-        return $this->name;
+        return $this->role;
     }
 
-    public function setName(string $name): self
+    public function setRole(string $role): self
     {
-        $this->name = $name;
+        $this->role = $role;
+
+        return $this;
+    }
+
+    public function getCreditOrder(): ?int
+    {
+        return $this->creditOrder;
+    }
+
+    public function setCreditOrder(?int $creditOrder): self
+    {
+        $this->creditOrder = $creditOrder;
 
         return $this;
     }

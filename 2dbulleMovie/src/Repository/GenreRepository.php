@@ -19,6 +19,32 @@ class GenreRepository extends ServiceEntityRepository
         parent::__construct($registry, Genre::class);
     }
 
+    public function findGenreDemo($name) 
+    {
+        $entityManager = $this->getEntityManager();
+        $query = $entityManager->createQuery(
+            "
+            SELECT g, m
+            FROM App\Entity\Genre g
+            JOIN g.movies m
+            WHERE g.name = :name
+            ORDER BY g.name DESC
+            "
+        )->setParameter(':name', $name);
+
+        dump($query->getSQL());
+
+        // $qb = $this->createQueryBuilder('g');
+        // $qb->orderBy('g.name', 'DESC');
+        // $qb->andWhere('g.name = :name');
+        // $qb->setParameter(':name', $name);
+
+        // $query = $qb->getQuery();
+
+
+        return $query->getResult();
+    }
+    
     // /**
     //  * @return Genre[] Returns an array of Genre objects
     //  */
