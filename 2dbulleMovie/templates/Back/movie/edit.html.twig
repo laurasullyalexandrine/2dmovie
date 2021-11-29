@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edition du film {{ movie.title }}{% endblock %}
+{% block menu_movie %} active {% endblock %}
+{% block body %}
+<section>
+    <div class="home-bloc-movie-picture-show">
+        <div class="home-bloc-movie-information-show">
+            <h1>Modifier : {{ movie.title }}</h1>
+
+                {{ form_start(form) }}
+
+                {{ form_errors(form) }}
+<br>
+                {{ form_row(form.title) }}
+<br>
+                {{ form_row(form.genres) }}
+<br>
+                {{ form_row(form.image) }}
+<br><br>
+                <div class="admin-footer">
+                    <button class="submit" type="submit">Modifier</button>
+                    <a class="nav_admin"href="{{ path('admin_movie') }}"><button class="submit">Retour</button></a>
+                </div>
+        </div>
+    </div>
+
+</section>
+{{ form_end(form) }}
+
+{% endblock %}
+
