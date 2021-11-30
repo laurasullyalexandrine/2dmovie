@@ -1,0 +1,235 @@
+css
+/*---------------Home---------------*/
+
+body {
+    font-family:'Montserrat', sans-serif;
+}
+
+#wrapper,
+#header-navigation
+{
+    margin: auto;
+    width: 900px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/*---------------Navigation---------------*/
+#header-navigation
+{
+    height: 260px;
+    border-radius: 5px;
+    position: relative;
+    margin-bottom: 25px;
+    background-repeat: no-repeat;
+    background-color: #211f1f;
+    box-shadow: 0px 4px 4px #1c1a19;
+    background-image: url('../images/bobine.png');
+}
+
+.nav-principal
+{
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-principal-item
+{
+    margin-top: 190px;
+}
+
+.nav-principal-item 
+{
+    padding-top: 4%;
+    list-style-type: none;
+}
+
+.nav-principal-link
+{
+    font-size: 0.9rem;
+    margin-right: 15px;
+    text-decoration: none;
+    color: rgb(134, 134, 134);
+    border: 1px solid transparent;
+    text-shadow: 0px 4px 4px #1c1a19;
+}
+
+.nav-principal-item a:hover 
+{
+    border-bottom: 1px solid grey;
+}
+
+.name-cinema
+{
+    font-size: 2.9rem;
+    text-align: center;
+}
+
+
+/*---------------Home Front---------------*/
+
+.home-movie-picture-one
+{
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-evenly;
+}
+
+.home-movie-picture
+{
+ justify-content: space-between;
+}
+
+.home-bloc-movie-picture
+{
+    border-radius: 5px;
+    border: 2px solid black;
+}
+
+.movies-title 
+{
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.movies-title-strong-link
+{
+    color: #f4a000;
+    text-decoration: none;
+    text-shadow: 0px 4px 4px #1c1a19;
+}
+
+/*---------------Show---------------*/
+
+.home-bloc-movie-picture-show
+{
+    width: 900px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.home-bloc-movie-information-show 
+{
+    margin-left: 50px;
+}
+
+.movies-title-show
+{
+    text-decoration: underline;
+}
+
+.synopsis
+{
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.paragraph
+{
+    font-style: italic;
+}
+
+.movies-genres 
+{
+    font-size: 1.2rem;
+    color: #f4a000;
+    text-shadow: 0px 4px 4px #1c1a19;
+}
+
+/*---------------Admin---------------*/
+
+ .active {
+     color: red;
+ }
+
+.admin-principal
+{
+    font-size: 1.8rem;
+}
+.admin-display
+{
+    width: 900px;
+    margin: auto;
+}
+
+.admin-footer
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.admin-list,
+th
+{
+    padding-right: 2%;
+}
+
+th
+{
+    text-align: center;
+}
+
+td
+{
+    border-top: 1px solid black;
+}
+
+/*---------------Admin_Nav---------------*/
+.title-add
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.nav_admin
+{
+    color: black;
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+.submit
+{
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 5px;
+    background-color: gray;
+    box-shadow: 0px 4px 4px #1c1a19;
+}
+
+.user-deco
+{
+    font-size: 0.9rem;
+    position: absolute;
+    margin-top: -35px;
+    margin-left: 510px;
+    text-align: right;
+    color: rgb(134, 134, 134);
+}
+
+.user-co
+{
+    font-size: 0.9rem;
+    position: absolute;
+    margin-top: -35px;
+    margin-left: 780px;
+    text-align: right;
+    color: rgb(134, 134, 134);
+}
+
+.connect
+{
+    font-size: 0.9rem;
+    color: red;
+    text-decoration: none;
+}
+
+.username
+{
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: rgb(134, 134, 134);
+    border: 1px solid transparent;
+    text-shadow: 0px 4px 4px #1c1a19;
+}
