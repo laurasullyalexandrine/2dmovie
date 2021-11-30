@@ -26,7 +26,7 @@ class MovieType extends AbstractType
                 'expanded' => false, // on passe à true si on veut afficher une liste de case à cocher
             ])
 
-            ->add('image', null,
+            ->add('picture', null,
             [
                 'label' => 'Affiche du film : '
             ])

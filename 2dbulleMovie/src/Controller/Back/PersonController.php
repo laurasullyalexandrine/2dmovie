@@ -3,6 +3,7 @@
 namespace App\Controller\Back;
 
 use App\Entity\Person;
+use App\Form\PersonType;
 use App\Repository\PersonRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,6 +19,35 @@ class PersonController extends AbstractController
         $allPerson = $personRepository->findBy([], ['name' => 'ASC']);
         return $this->render('back/person/browse.html.twig', [
             'person_list' => $allPerson,
+        ]);
+    }
+
+    #[Route('/admin/person/new', name: 'admin_person_add')]
+    public function add(Request $request): Response
+    {
+        $person = new Person();
+       
+        $form = $this->createForm(PersonType::class, $person);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid())
+        {
+    
+            $person = $form->getData();
+
+            $entityManager = $this->getDoctrine()->getManager();
+
+            $entityManager->persist($person);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Person `' . $person->getName() . '` a bien été mis ajouté !');
+
+            return $this->redirectToRoute('admin_person');
+        }
+
+        return $this->render('back/person/add.html.twig', [
+            'form' => $form->createView(),
         ]);
     }
 
@@ -52,35 +82,6 @@ class PersonController extends AbstractController
         return $this->render('back/person/edit.html.twig', [
             'form' => $form->createView(),
             'person' => $person,
-        ]);
-    }
-
-    #[Route('/admin/person/new', name: 'admin_person_add')]
-    public function add(Request $request): Response
-    {
-        $person = new Person();
-       
-        $form = $this->createForm(PersonType::class, $person);
-
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid())
-        {
-    
-            $person = $form->getData();
-
-            $entityManager = $this->getDoctrine()->getManager();
-
-            $entityManager->persist($person);
-            $entityManager->flush();
-
-            $this->addFlash('success', 'Person `' . $person->getName() . '` a bien été mis ajouté !');
-
-            return $this->redirectToRoute('admin_person');
-        }
-
-        return $this->render('back/person/add.html.twig', [
-            'form' => $form->createView(),
         ]);
     }
 

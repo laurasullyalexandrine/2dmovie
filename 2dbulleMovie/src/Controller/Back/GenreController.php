@@ -3,6 +3,7 @@
 namespace App\Controller\Back;
 
 use App\Entity\Genre;
+use App\Form\GenreType;
 use App\Repository\GenreRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,6 +21,39 @@ class GenreController extends AbstractController
 
         return $this->render('back/genre/browse.html.twig', [
             'genre_list' => $allGenre,
+        ]);
+    }
+
+    #[Route('/admin/genre/new', name: 'admin_genre_add')]
+    public function add(Request $request): Response
+    {
+        $genre = new Genre();
+        // je crée un objet form type
+        $form = $this->createForm(GenreType::class, $genre);
+        // cette méthode va vérifier si un formulaire html a été soumis en post
+        // et si ce formulaire concerne l'entité Genre
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            // ici tout est ok, les champs sont valides et on peut continuer
+
+            $genre = $form->getData();
+
+            $entityManager = $this->getDoctrine()->getManager();
+
+            // on enregistre en bdd par exemple 
+            $entityManager->persist($genre);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Genre `' . $genre->getName() . '` a bien été mis ajouté !');
+
+            // puis on redirige
+            return $this->redirectToRoute('admin_genre');
+        }
+
+        return $this->render('back/genre/add.html.twig', [
+            'form' => $form->createView(),
         ]);
     }
 
@@ -55,39 +89,6 @@ class GenreController extends AbstractController
         return $this->render('back/genre/edit.html.twig', [
             'form' => $form->createView(),
             'genre' => $genre,
-        ]);
-    }
-
-    #[Route('/admin/genre/new', name: 'admin_genre_add')]
-    public function add(Request $request): Response
-    {
-        $genre = new Genre();
-        // je crée un objet form type
-        $form = $this->createForm(GenreType::class, $genre);
-        // cette méthode va vérifier si un formulaire html a été soumis en post
-        // et si ce formulaire concerne l'entité Genre
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid())
-        {
-            // ici tout est ok, les champs sont valides et on peut continuer
-
-            $genre = $form->getData();
-
-            $entityManager = $this->getDoctrine()->getManager();
-
-            // on enregistre en bdd par exemple 
-            $entityManager->persist($genre);
-            $entityManager->flush();
-
-            $this->addFlash('success', 'Genre `' . $genre->getName() . '` a bien été mis ajouté !');
-
-            // puis on redirige
-            return $this->redirectToRoute('admin_genre');
-        }
-
-        return $this->render('back/genre/add.html.twig', [
-            'form' => $form->createView(),
         ]);
     }
 
