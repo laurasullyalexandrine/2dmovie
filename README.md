@@ -18,4 +18,4 @@ C'est une projet créé entière avec le framework Symfony 5.3.
 ### Documents
 - Dictionnaire de données.
 - Modèle Conceptuel de Données.
-- Modèle Logique de Données.
+- Modèle Physique de Données.
