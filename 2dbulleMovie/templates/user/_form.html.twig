@@ -1,0 +1,11 @@
+
+{{ form_start(form) }}
+    {{ form_errors(form) }}
+        {{ form_row(form.email) }}
+        <br>
+        {{ form_row(form.roles) }}
+        <br>
+        {{ form_row(form.password) }}
+        <br><br>
+    <button class="submit">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}

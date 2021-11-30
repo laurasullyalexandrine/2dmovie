@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des utilisateurs{% endblock %}
+
+{% block body %}
+<section>
+    <div class="home-bloc-movie-picture-show">
+    <div class="home-bloc-movie-information-show">
+    <h1>Liste des utilisateurs</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id </th><br>
+                <th>Email&nbsp;</th>
+                <th>Roles</th>
+                <th>Actions&nbsp;</th>
+            </tr>
+            
+        </thead>
+        <tbody>
+        <br>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}&nbsp;&nbsp;</td>
+                <td>
+                    <a class="nav_admin" href="{{ path('admin_user_show', {'id': user.id}) }}"><button class="submit">Afficher</button>&nbsp;</a>
+                    <a class="nav_admin" href="{{ path('admin_user_edit', {'id': user.id}) }}"><button class="submit">Éditer</button></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <br>
+            <div class="admin-footer">
+                <a class="nav_admin" href="{{ path('admin_user_new') }}"><button class="submit">Créer</button></a>
+            </div>
+        </div>
+     </div>
+</section>
+{% endblock %}

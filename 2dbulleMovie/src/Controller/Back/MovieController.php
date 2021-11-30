@@ -21,7 +21,7 @@ class MovieController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/movie/id', name: 'admin_movie_read')]
+    #[Route('/admin/movie/{id}', name: 'admin_movie_read')]
     public function read(Movie $movie): Response
     {
         return $this->render('back/movie/read.html.twig', [
@@ -29,7 +29,7 @@ class MovieController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/movie/id', name: 'admin_movie_edit', methods: ['GET', 'POST'])]
+    #[Route('/admin/movie/{id}', name: 'admin_movie_edit', methods: ['GET', 'POST'])]
     public function edit(Movie $movie, Request $request): Response
     {
         $form = $this->createForm(MovieType::class, $movie);
@@ -88,7 +88,7 @@ class MovieController extends AbstractController
     }
 
 
-    #[Route('/admin/movie/delete/id', name: 'admin_movie_delete', methods: ['GET'])]
+    #[Route('/admin/movie/delete/{id}', name: 'admin_movie_delete', methods: ['GET'])]
     public function delete(Movie $movie, EntityManagerInterface $entityManagerInterface): Response
     {
         $entityManagerInterface->remove($movie);

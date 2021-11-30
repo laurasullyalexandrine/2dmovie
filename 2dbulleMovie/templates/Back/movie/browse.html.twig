@@ -1,20 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MovieController!{% endblock %}
-
+{% block title %}Liste des Films{% endblock %}
+{% block menu_movie %} active {% endblock %}
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<section>
+    <div class="admin-display">
+        <div class="title-add">
+            <h1 class="admin-principal"> Liste des films</h1>  
+            
+            {% if is_granted('ROLE_ADMIN') %}
+            <a class="nav_admin" href="{{ path('admin_movie_add') }}"><button class="submit">Ajouter</button></a>
+            {% endif %}
+        </div>
+            {% for movie in movie_list %}
+                <ul class="admin-movie-list">
+                    <li>
+                        <strong class="movies-title-strong"><a class ="movies-title-strong-link" href="{{ path('admin_movie_read', {id: movie.id}) }}"> {{ movie.title }}</a></strong>
+                    </li>
+                </ul>
+            {% endfor %}
+    </div>
+</section>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/xampp/htdocs/2dmovie/2dbulleMovie/src/Controller/MovieController.php'|file_link(0) }}">src/Controller/MovieController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/2dmovie/2dbulleMovie/templates/movie/index.html.twig'|file_link(0) }}">templates/movie/index.html.twig</a></code></li>
-    </ul>
-</div>
 {% endblock %}
