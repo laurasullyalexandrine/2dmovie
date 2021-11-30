@@ -23,7 +23,7 @@ class GenreController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/genre/id', name: 'admin_genre_read')]
+    #[Route('/admin/genre/{id}', name: 'admin_genre_read')]
     public function read(Genre $genre): Response // Genre $genre est équivalent à $genre =new Genre:: class avec getDoc et getManger 
     {
         dump($genre);
@@ -33,7 +33,7 @@ class GenreController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/genre/edit/id', name: 'admin_genre_edit', methods: ['GET', 'POST'])]
+    #[Route('/admin/genre/edit/{id}', name: 'admin_genre_edit', methods: ['GET', 'POST'])]
     public function edit(Genre $genre, Request $request): Response
     {
         $form = $this->createForm(GenreType::class, $genre);
@@ -91,7 +91,7 @@ class GenreController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/genre/delete', name: 'admin_genre_delete')]
+    #[Route('/admin/genre/delete/{id}', name: 'admin_genre_delete')]
     public function delete(Genre $genre, EntityManagerInterface $entityManagerInterface): Response
     {
         $entityManagerInterface->remove($genre);

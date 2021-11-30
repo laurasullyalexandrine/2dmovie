@@ -21,7 +21,7 @@ class PersonController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/person/id', name: 'admin_person_read', methods: ['GET'])]
+    #[Route('/admin/person/{id}', name: 'admin_person_read', methods: ['GET'])]
     public function read(Person $person): Response
     {
         dump($person);
@@ -30,7 +30,7 @@ class PersonController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/person/id', name: 'admin_person_edit', methods: ['GET', 'POST'])]
+    #[Route('/admin/person/{id}', name: 'admin_person_edit', methods: ['GET', 'POST'])]
     public function edit(Person $person, Request $request): Response
     {
         $form = $this->createForm(PersonType::class, $person);
@@ -84,7 +84,7 @@ class PersonController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/person/delete/id', name: 'admin_person_delete', methods: ['GET', 'POST'])]
+    #[Route('/admin/person/delete/{id}', name: 'admin_person_delete', methods: ['GET', 'POST'])]
     public function delete(Person $person, EntityManagerInterface $entityManagerInterface): Response
     {
         $entityManagerInterface->remove($person);

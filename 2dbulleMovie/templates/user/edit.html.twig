@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un utilisateur{% endblock %}
+
+{% block body %}
+<section>
+    <div class="home-bloc-movie-picture-show">
+        <div class="home-bloc-movie-information-show">
+            <h1>Modifier un utilisateur</h1>
+                
+                    {{ include('user/_form.html.twig', {'button_label': 'Mise à jour'}) }}
+
+                <div class="admin-footer">
+                    <button class="submit"><a class="nav_admin" href="{{ path('admin_user') }}">Retour</button></a>
+
+                    {{ include('user/_delete_form.html.twig') }}
+                </div>
+        </div>
+     </div>
+</section>
+{% endblock %}

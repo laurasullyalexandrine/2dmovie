@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Utilisateur{% endblock %}
+
+{% block body %}
+<section>
+    <div class="home-bloc-movie-picture-show">
+        <div class="home-bloc-movie-information-show">
+            <h1>Utilisateur : {{user.email}}</h1>
+
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>Id: </th>
+                            <td>{{ user.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Email: </th>
+                            <td>{{ user.email }}</td>
+                        </tr>
+                        <tr>
+                            <th>Roles: </th>
+                            <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="admin-footer">
+                <a class="nav_admin" href="{{ path('admin_user') }}"><button class="submit">Retour</button></a>
+                <a class="nav_admin" href="{{ path('admin_user_edit', {'id': user.id}) }}"><button class="submit">Éditer</button></a>
+                {{ include('user/_delete_form.html.twig') }}
+                </div>
+        </div>
+     </div>
+</section>    
+{% endblock %}

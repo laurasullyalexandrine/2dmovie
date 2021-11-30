@@ -21,7 +21,7 @@ class CastingController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/casting/id', name: 'admin_casting_read', methods: ['GET'])]
+    #[Route('/admin/casting/{id}', name: 'admin_casting_read', methods: ['GET'])]
     public function read(Casting $casting): Response
     {
         return $this->render('back/casting/read.html.twig', [
@@ -29,7 +29,7 @@ class CastingController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/casting/edit/id', name: 'admin_casting_edit', methods: ['GET', 'POST'])]
+    #[Route('/admin/casting/edit/{id}', name: 'admin_casting_edit', methods: ['GET', 'POST'])]
     public function edit(Casting $casting, Request $request): Response
     {
         $form = $this->createForm(MovieType::class, $casting);
@@ -79,7 +79,7 @@ class CastingController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/casting/delete/id', name: 'admin_casting_delete', methods: ['GET'])]
+    #[Route('/admin/casting/delete/{id}', name: 'admin_casting_delete', methods: ['GET'])]
     public function delete(Casting $casting, EntityManagerInterface $entityManagerInterface): Response
     {
         $entityManagerInterface->remove($casting);
