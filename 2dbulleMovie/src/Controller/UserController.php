@@ -22,10 +22,10 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/user/new', name: 'admin_user_new', methods: ['GET'])]
+    #[Route('/admin/user/new', name: 'admin_user_new')]
     public function new(Request $request, UserPasswordHasherInterface $userPasswordHasherInterface)
     {
-       $user = new User($userPasswordHasherInterface);
+       $user = new User();
        $form = $this->createForm(UserType::class, $user);
        $form->handleRequest($request);
 
