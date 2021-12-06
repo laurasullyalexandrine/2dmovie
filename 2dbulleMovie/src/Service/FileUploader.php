@@ -4,7 +4,6 @@
 namespace App\Service;
 
 use App\Entity\Movie;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
@@ -17,19 +16,12 @@ class FileUploader
         $this->movieDirectory = $movieDirectory;
     }
 
-    /**
-     * function to use dowload a picture for the movie
-     *
-     * @param UploadedFile|null $picture
-     * @param string $targetDirectory
-     * @param string $prefix
-     * @return string|null
-     */
+
     public function manageMoviePicture(?UploadedFile $picture, string $targetDirectory, $prefix = ''): ?string
     {
         $newFileloader = null;
 
-        if($newFileloader !== null)
+        if(!empty($picture))
         {
             $newFileloader = $prefix . uniqid() . '.' . $picture->guessExtension();
 
