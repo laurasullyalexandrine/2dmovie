@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %} MovieDB !{% endblock %}
-
+{% block menu_home %} active {% endblock %}
 
 
 {% block body %}
@@ -10,7 +10,7 @@
 <div class="home-movie-picture-one">
     {% for movie in movie_list|slice(0,6) %}
         <div class="home-movie-picture"><a href="{{ path('movie_show', {id: movie.id}) }}"><img class ="home-bloc-movie-picture"src="{{ asset('uploads/' ~ movie.picture ) }}" width="290px" height="330px" alt="picture_movie"></a>
-            <h1 class="movies-title"> <strong class="movies-title-strong"><a class ="movies-title-strong-link" href="{{ path('movie_show', {id: movie.id}) }}"> {{ movie.title }}</a></strong></h1>
+            <h1 class="movies-title"> <strong class="movies-title-strong"><a class ="names-strong-link" href="{{ path('movie_show', {id: movie.id}) }}"> {{ movie.title }}</a></strong></h1>
         </div>
     {% endfor %}
 </div>
