@@ -17,11 +17,12 @@ class MovieController extends AbstractController
         ]);
     }
 
-    #[Route('/id', name: 'movie_show', methods:['GET'])]
+    #[Route('/id', name:'movie_show', methods:['GET'])]
     public function show($id, MovieRepository $movieRepo): Response
     {
         // récupérer une instance de movieRepository
         $movie = $movieRepo->findOneWithGenre($id);
+        dump($movie);
 
         return $this->render('movie/show.html.twig', [
             'movie' => $movie,

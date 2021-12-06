@@ -35,15 +35,16 @@ class UserType extends AbstractType
                     'Utilisateur' => 'ROLE_USER',
                 ]
             ])
-            ->add('password', RepeatedType::class, 
+            ->add('plainPassword', RepeatedType::class, 
             [
                 'label' => 'mot de passe : ',
+                'mapped' => false, // composant Symfony ne va pas demander à renseigner le mot de passe lors de la modification d'un email
                 'type' => PasswordType::class,
                 'invalid_message'=> 'Les mots de passes ne correspondent pas.',
                 'required' => false,
                 'first_options' => ['label' => 'Mot de passe : '],
                 'second_options' => ['label' => 'Répétez le mot de passe : '],
-                'mapped' => false, // composant Symfony ne va pas demander à renseigner le mot de passe lors de la modification d'un email
+                
             ])
         ;
     }

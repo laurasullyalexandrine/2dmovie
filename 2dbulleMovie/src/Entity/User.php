@@ -59,7 +59,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      *
      * @see UserInterface
      */
-    public function getUserIdentifier(): string
+    public function getUserIdentifier(): ?string
     {
         return (string) $this->email;
     }
@@ -113,12 +113,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @see PasswordAuthenticatedUserInterface
      */
-    public function getPassword(): string
+    public function getPassword(): ?string
     {
         return $this->password;
     }
 
-    public function setPassword(string $password): self
+    public function setPassword(?string $password): self
     {
         $this->password = $password;
 
@@ -133,7 +133,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getSalt(): ?string
     {
-        return null;
+        return null; // elle retourne parce que l'algorythme de hashage est géré automiquement dans le security.yaml
     }
 
     /**

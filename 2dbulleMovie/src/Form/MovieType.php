@@ -32,12 +32,12 @@ class MovieType extends AbstractType
             [
                 'label' => 'Affiche du film : ',
                 'mapped' => false,
-                'require' => false,
+                'required' => false,
                 'constraints' => 
                 [
                     new File([
                         'maxSize' => '2M',
-                        'mimeTypesMessage' => 'La taille maximum de l\'image ne doit pas dépasser 2Méga',
+                        'mimeTypesMessage' => 'La taille maximum de l\'image ne doit pas dépasser 2 MO',
                     ])
                 ]
             ]);

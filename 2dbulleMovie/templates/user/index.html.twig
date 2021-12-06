@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Liste des utilisateurs{% endblock %}
-
+{% block menu_user %} active {% endblock %}
 {% block body %}
 <section>
     <div class="home-bloc-movie-picture-show">
@@ -26,7 +26,7 @@
                 <td>{{ user.email }}</td>
                 <td>{{ user.roles ? user.roles|json_encode : '' }}&nbsp;&nbsp;</td>
                 <td>
-                    <a class="nav_admin" href="{{ path('admin_user_show', {'id': user.id}) }}"><button class="submit">Afficher</button>&nbsp;</a>
+                    <a class="nav_admin" href="{{ path('admin_user_show', {'id': user.id}) }}"><button class="submit">Afficher</button>&nbsp;&nbsp;&nbsp;</a>
                     <a class="nav_admin" href="{{ path('admin_user_edit', {'id': user.id}) }}"><button class="submit">Éditer</button></a>
                 </td>
             </tr>

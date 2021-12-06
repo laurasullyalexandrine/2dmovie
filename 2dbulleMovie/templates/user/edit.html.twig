@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Modifier un utilisateur{% endblock %}
-
+{% block menu_user %} active {% endblock %}
 {% block body %}
 <section>
     <div class="home-bloc-movie-picture-show">
@@ -13,7 +13,7 @@
                 <div class="admin-footer">
                     <button class="submit"><a class="nav_admin" href="{{ path('admin_user') }}">Retour</button></a>
 
-                    {{ include('user/_delete_form.html.twig') }}
+                    {{ include('user/_delete.html.twig') }}
                 </div>
         </div>
      </div>

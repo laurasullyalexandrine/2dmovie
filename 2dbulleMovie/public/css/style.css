@@ -48,14 +48,14 @@ body {
     font-size: 0.9rem;
     margin-right: 15px;
     text-decoration: none;
-    color: rgb(134, 134, 134);
+    color: #ffff;
     border: 1px solid transparent;
     text-shadow: 0px 4px 4px #1c1a19;
 }
 
 .nav-principal-item a:hover 
 {
-    border-bottom: 1px solid grey;
+    color: #f4a000;
 }
 
 .name-cinema
@@ -71,6 +71,7 @@ body {
 {
     display: flex;
     margin-top: 20px;
+    flex-wrap: wrap;
     justify-content: space-evenly;
 }
 
@@ -139,8 +140,13 @@ body {
 /*---------------Admin---------------*/
 
  .active {
-     color: red;
+    color: #f4a000;
  }
+
+.active a:hover
+{
+    color:#ffff;
+}
 
 .admin-principal
 {
@@ -229,7 +235,7 @@ td
 {
     font-size: 0.9rem;
     text-decoration: none;
-    color: rgb(134, 134, 134);
+    color: #ffff;
     border: 1px solid transparent;
     text-shadow: 0px 4px 4px #1c1a19;
 }

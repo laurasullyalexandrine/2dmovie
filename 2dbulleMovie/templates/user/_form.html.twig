@@ -5,7 +5,7 @@
         <br>
         {{ form_row(form.roles) }}
         <br>
-        {{ form_row(form.password) }}
-        <br><br>
-    <button class="submit">{{ button_label|default('Enregistrer') }}</button>
+        {{ form_row(form.plainPassword) }}
+        <br>
+    <br><button class="submit">{{ button_label|default('Enregistrer') }}</button><br>
 {{ form_end(form) }}

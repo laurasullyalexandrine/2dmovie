@@ -27,7 +27,7 @@
 
                     {% if is_granted ('ROLE_ADMIN') %}
                     <li class="nav-principal-item"> 
-                    <a class="nav-principal-link"href="{{ path('admin_user') }}"><span class="user-red">Utilisateurs</span></a></li>
+                    <a class="nav-principal-link {% block menu_user %} {% endblock %}" href="{{ path('admin_user') }}"><span class="user-red">Utilisateurs</span></a></li>
                      {% endif %}
                 </ul>
             <div class="user-deco">

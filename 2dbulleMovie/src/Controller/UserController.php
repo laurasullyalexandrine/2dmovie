@@ -25,22 +25,27 @@ class UserController extends AbstractController
     #[Route('/admin/user/new', name: 'admin_user_new')]
     public function new(Request $request, UserPasswordHasherInterface $userPasswordHasherInterface)
     {
-       $user = new User();
-       $form = $this->createForm(UserType::class, $user);
-       $form->handleRequest($request);
+       $user = new User();// On instancie un nouvel objet User.
+       $form = $this->createForm(UserType::class, $user); // On crée un formulaire avec les proprités de la classe User.
+       $form->handleRequest($request); // On récupère les données soumisent par le formulaire
 
        if ($form->isSubmitted() && $form->isValid()) {
            $entityManager = $this->getDoctrine()->getManager();
 
-            $rawPassword = $request->request->get('user')['password']['first'];
+            $rawPassword = $request->request->get('user')['plainPassword']['first']; 
+            // On stocke dans une variable le premier mot de passe en clair, lié à l'utilisateur.
 
             if(!empty($rawPassword))
             {
-                $user->setPassword($userPasswordHasherInterface->hashPassword($user, $user->getPassword($rawPassword)));
+                // Si le champs de mot de passe lié à utilisateur n'est pas vide, alors on la hashe.
+                $user->setPassword($userPasswordHasherInterface->hashPassword($user, $rawPassword));
             }
           
+            // On dit que les données du nouvel utilisateur sont prête et on demande l'autorisation d'enregistrer en BDD
            $entityManager->persist($user);
-           $entityManager->flush();
+           $entityManager->flush(); // On enregistre en BDD
+
+           $this->addFlash('success', 'Votre compte a bien été créé !');
 
            return $this->redirectToRoute('admin_user');
        }
@@ -69,15 +74,15 @@ class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             // Récupérer le mot de passe en clair via la requete saisi par l'utilisateur (donc le formulaire complété)
             // Avec RepeatedType fait que le password est devenu un tableau alors il faut récupérer par l'info par la clé
-            $rawPassword = $request->request->get('user')['password']['first'];
+            $rawPassword = $request->request->get('user')['plainPassword']['first']; 
 
             if(!empty($rawPassword))
             {
-                $user->setPassword($userPasswordHasherInterface->hashPassword($user, $user->getPassword($rawPassword)));
+                $user->setPassword($userPasswordHasherInterface->hashPassword($user, $rawPassword));
             }
 
             $this->getDoctrine()->getManager()->flush();
-
+            $this->addFlash('success', 'Votre compte a bien été modifié !');
             return $this->redirectToRoute('admin_user');
         }
          return $this->render('user/edit.html.twig', [
@@ -86,7 +91,7 @@ class UserController extends AbstractController
          ]);
     }
 
-    #[Route('/admin/user/delete/{id}', name: 'admin_user_delete', methods: ['GET'])]
+    #[Route('/admin/user/delete/{id}', name: 'admin_user_delete', methods: ['POST'])]
     public function delete(Request $request, User $user): Response
     {
         if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {

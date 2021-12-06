@@ -9,7 +9,7 @@
 <section>
 <div class="home-movie-picture-one">
     {% for movie in movie_list|slice(0,6) %}
-        <div class="home-movie-picture"><a href="{{ path('movie_show', {id: movie.id}) }}"><img class ="home-bloc-movie-picture"src="{{ movie.picture }}" width="300px" height="350px" alt="picture_movie"></a>
+        <div class="home-movie-picture"><a href="{{ path('movie_show', {id: movie.id}) }}"><img class ="home-bloc-movie-picture"src="{{ movie.picture }}" width="290px" height="330px" alt="picture_movie"></a>
             <h1 class="movies-title"> <strong class="movies-title-strong"><a class ="movies-title-strong-link" href="{{ path('movie_show', {id: movie.id}) }}"> {{ movie.title }}</a></strong></h1>
         </div>
     {% endfor %}
