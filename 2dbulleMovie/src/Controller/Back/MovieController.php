@@ -66,7 +66,17 @@ class MovieController extends AbstractController
                 'form' => $form->createView(),
             ]);
         }
-  
+    }
+
+    #[Route('/admin/movie/{id}', name: 'admin_movie_read')]
+    public function read($id, MovieRepository $movieRepository): Response
+    {
+        // récupérer une instance de movieRepository
+        $movie = $movieRepository->findOneWithGenre($id);
+        //dd($movie);
+        return $this->render('back/movie/read.html.twig', [
+            'movie' => $movie,
+        ]);
     }
 
     #[Route('/admin/movie/edit/{id}', name:'admin_movie_edit', methods: ['GET', 'POST'])]
@@ -107,16 +117,4 @@ class MovieController extends AbstractController
 
         return $this->redirectToRoute('admin_movie');
     }
-
-    #[Route('/admin/movie/{id}', name: 'admin_movie_read')]
-    public function read($id, MovieRepository $movieRepository): Response
-    {
-        // récupérer une instance de movieRepository
-        $movie = $movieRepository->findOneWithGenre($id);
-        //dd($movie);
-        return $this->render('back/movie/read.html.twig', [
-            'movie' => $movie,
-        ]);
-    }
-    
 }

@@ -16,14 +16,8 @@ class MovieController extends AbstractController
             'movie_list' => $movieRepository->findAllOrderedDQL(),
         ]);
     }
-    
-    #[Route('/mentions-legales', name: 'legal_mention')]
-    public function legal():Response
-    {
-        return $this->render('main/legal_mention.html.twig');
-    } 
 
-    #[Route('/{id}', name:'movie_show', methods:['GET'])]
+    #[Route('/id', name:'movie_show', methods:['GET'])]
     public function show($id, MovieRepository $movieRepo): Response
     {
         // récupérer une instance de movieRepository
@@ -34,4 +28,10 @@ class MovieController extends AbstractController
             'movie' => $movie,
         ]);
     }
+
+    #[Route('/mentions-legales', name: 'legal_mention')]
+    public function legal():Response
+    {
+        return $this->render('main/legal_mention.html.twig');
+    } 
 }

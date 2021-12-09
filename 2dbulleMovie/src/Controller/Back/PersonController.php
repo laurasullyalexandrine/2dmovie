@@ -60,7 +60,7 @@ class PersonController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/person/{id}', name: 'admin_person_edit', methods: ['GET', 'POST'])]
+    #[Route('/admin/person/edit/{id}', name: 'admin_person_edit', methods: ['GET', 'POST'])]
     public function edit(Person $person, Request $request): Response
     {
         $form = $this->createForm(PersonType::class, $person);
