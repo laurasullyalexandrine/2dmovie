@@ -34,7 +34,6 @@ footer,
 .nav-principal
 {
     display: flex;
-    flex-direction: row;
 }
 
 .nav-principal-item
@@ -215,7 +214,8 @@ td
     font-size: 0.9rem;
     position: absolute;
     margin-top: -35px;
-    margin-left: 510px;
+    margin-left: 450px;
+    margin-right: 40px;
     text-align: right;
     color: rgb(134, 134, 134);
 }
@@ -266,7 +266,8 @@ footer
 .footer-nav-link
 {
     color: #ffff;
-    padding-right: 2%;
+    font-size: 0.9rem;
+    padding-right: 5%;
     text-decoration: none;
 }
 .footer-nav-link :hover

@@ -10,24 +10,26 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 class FileUploader
 {
     private $movieDirectory;
+    private $slugger;
 
-    public function __construct($movieDirectory)
+    public function __construct($movieDirectory, SluggerInterface $slugger)
     {
         $this->movieDirectory = $movieDirectory;
+        $this->slugger = $slugger;
     }
 
 
-    public function manageMoviePicture(?UploadedFile $picture, string $targetDirectory, $prefix = ''): ?string
+    public function manageMoviePicture(?UploadedFile $picture, string $targetDirectory): ?string
     {
-        $newFileloader = null;
-
-        if(!empty($picture))
+        if($picture)
         {
-            $newFileloader = $prefix . uniqid() . '.' . $picture->guessExtension();
+            $newPictureloader = pathinfo($picture->getClientOriginalName(), PATHINFO_FILENAME);
+            $safePictureName = $this->slugger->slug($newPictureloader);
+            $newPictureName = $safePictureName . '-' . uniqid() . '.' . $picture->guessExtension();
 
-            $picture->move($targetDirectory, $newFileloader);
+            $picture->move($targetDirectory, $newPictureName);
         }
-        return $newFileloader;
+        return $newPictureName;
     }
 
 /**
@@ -39,7 +41,7 @@ class FileUploader
  */
     public function moveMoviePicture(?UploadedFile $picture, Movie $movie)
     {
-        $pictureName = $this->manageMoviePicture($picture, $this->movieDirectory, 'new-picture-');
+        $pictureName = $this->manageMoviePicture($picture, $this->movieDirectory);
         if($pictureName !== null)
         {
             $movie->setPicture($pictureName);
