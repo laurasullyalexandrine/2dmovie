@@ -1,5 +1,5 @@
 css
-/*---------------Home---------------*/
+/*--------------- Home ---------------*/
 
 body {
     font-family:'Montserrat', sans-serif;
@@ -13,16 +13,21 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-/*---------------Navigation---------------*/
+/*--------------- Navigation_Footer---------------*/
+footer,
+#header-navigation
+{
+    border-radius: 5px;
+    background-color: #211f1f;
+    box-shadow: 0px 4px 4px #1c1a19;
+}
+
 #header-navigation
 {
     height: 260px;
-    border-radius: 5px;
     position: relative;
     margin-bottom: 25px;
     background-repeat: no-repeat;
-    background-color: #211f1f;
-    box-shadow: 0px 4px 4px #1c1a19;
     background-image: url('../images/bobine.png');
 }
 
@@ -48,14 +53,15 @@ body {
     font-size: 0.9rem;
     margin-right: 15px;
     text-decoration: none;
-    color: rgb(134, 134, 134);
+    color: #ffff;
     border: 1px solid transparent;
     text-shadow: 0px 4px 4px #1c1a19;
 }
 
 .nav-principal-item a:hover 
 {
-    border-bottom: 1px solid grey;
+    color: #f4a000;
+    
 }
 
 .name-cinema
@@ -65,12 +71,13 @@ body {
 }
 
 
-/*---------------Home Front---------------*/
+/*--------------- Home_Front ---------------*/
 
 .home-movie-picture-one
 {
     display: flex;
     margin-top: 20px;
+    flex-wrap: wrap;
     justify-content: space-evenly;
 }
 
@@ -91,14 +98,19 @@ body {
     text-align: center;
 }
 
-.movies-title-strong-link
+.names-strong-link
 {
     color: #f4a000;
     text-decoration: none;
     text-shadow: 0px 4px 4px #1c1a19;
 }
 
-/*---------------Show---------------*/
+.color-logo 
+{
+    font-weight: 400;
+    color: #fdc112;
+}
+/*--------------- Show ---------------*/
 
 .home-bloc-movie-picture-show
 {
@@ -111,11 +123,6 @@ body {
 .home-bloc-movie-information-show 
 {
     margin-left: 50px;
-}
-
-.movies-title-show
-{
-    text-decoration: underline;
 }
 
 .synopsis
@@ -131,16 +138,21 @@ body {
 
 .movies-genres 
 {
-    font-size: 1.2rem;
-    color: #f4a000;
+    font-size: 1rem;
+    color: #ffff;
     text-shadow: 0px 4px 4px #1c1a19;
 }
 
-/*---------------Admin---------------*/
+/*--------------- Admin ---------------*/
 
  .active {
-     color: red;
+    color: #f4a000;
  }
+
+.active a:hover
+{
+    color:#ffff;
+}
 
 .admin-principal
 {
@@ -174,12 +186,12 @@ td
     border-top: 1px solid black;
 }
 
-/*---------------Admin_Nav---------------*/
+/*--------------- Admin_Nav ---------------*/
 .title-add
 {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .nav_admin
@@ -229,7 +241,65 @@ td
 {
     font-size: 0.9rem;
     text-decoration: none;
-    color: rgb(134, 134, 134);
+    color: #ffff;
     border: 1px solid transparent;
     text-shadow: 0px 4px 4px #1c1a19;
 }
+
+/*--------------- Footer --------------*/
+
+footer
+{
+    height: 90px;
+    margin-top: 5%;
+    color: #ffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-nav
+{
+    text-align: center;
+}
+
+.footer-nav-link
+{
+    color: #ffff;
+    padding-right: 2%;
+    text-decoration: none;
+}
+.footer-nav-link :hover
+{
+    color: #f4a000;
+}
+
+.footer-nav-made
+{
+    font-size: 0.8rem;
+}
+
+/*--------------- Legals_Mentions --------------*/
+
+.legals
+{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h1, h2{
+    color: #f4a000;
+    text-shadow: 0px 4px 4px #1c1a19;
+}
+.mention-link
+{
+    color: #ffff;
+    text-decoration: none;
+}
+.mention-link :hover
+{
+    color: #f4a000;
+}
+

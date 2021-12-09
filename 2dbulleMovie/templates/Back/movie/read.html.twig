@@ -6,8 +6,7 @@
 
 <section>
     <div class="home-bloc-movie-picture-show">
-    
-            <div class="home-movie_picture"><img class ="home-bloc-movie-picture"src="{{movie.picture}}" width="360px" alt=""></a></div>
+                 <div class="home-movie_picture"><img class ="home-bloc-movie-picture"src="{{ asset('uploads/' ~ movie.picture ) }}" width="360px" alt="picture_movie"></a></div>
             
             <div class="home-bloc-movie-information-show">
                 <h1 class="movies-title-show"> <strong class="movies-title-strong-show">{{movie.title}}</strong></h1>
@@ -28,9 +27,7 @@
                     <a class="nav_admin"href="{{ path('admin_movie_edit', {id : movie.id}) }}"><button class="submit">Editer</button></a>
                     <a class="nav_admin"href="{{ path('admin_movie_delete', {id : movie.id}) }}"><button class="submit">Supprimer</button></a>
                 </div>
-            
             </div>
-    
     
      </div>
 </section>

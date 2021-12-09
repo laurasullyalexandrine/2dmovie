@@ -4,8 +4,10 @@ namespace App\Form;
 
 use App\Entity\Movie;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 class MovieType extends AbstractType
@@ -23,16 +25,24 @@ class MovieType extends AbstractType
 
             ->add('genres', null, [
                 'label' => 'Genres associés : ',
-                'expanded' => false, // on passe à true si on veut afficher une liste de case à cocher
+                'expanded' => true, // on passe à false si on ne veut pas afficher une liste de case à cocher
             ])
 
-            ->add('picture', null,
+            ->add('picture', FileType::class,
             [
-                'label' => 'Affiche du film : '
-            ])
-                
-        ;
+                'label' => 'Affiche du film : ',
+                'mapped' => false,
+                'required' => false,
+                'constraints' => 
+                [
+                    new File([
+                        'maxSize' => '2M',
+                        'mimeTypesMessage' => 'La taille maximum de l\'image ne doit pas dépasser 2 MO',
+                    ])
+                ]
+            ]);
     }
+    
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
