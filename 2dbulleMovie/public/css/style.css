@@ -1,5 +1,5 @@
 css
-/*---------------Home---------------*/
+/*--------------- Home ---------------*/
 
 body {
     font-family:'Montserrat', sans-serif;
@@ -13,16 +13,21 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-/*---------------Navigation---------------*/
+/*--------------- Navigation_Footer---------------*/
+footer,
+#header-navigation
+{
+    border-radius: 5px;
+    background-color: #211f1f;
+    box-shadow: 0px 4px 4px #1c1a19;
+}
+
 #header-navigation
 {
     height: 260px;
-    border-radius: 5px;
     position: relative;
     margin-bottom: 25px;
     background-repeat: no-repeat;
-    background-color: #211f1f;
-    box-shadow: 0px 4px 4px #1c1a19;
     background-image: url('../images/bobine.png');
 }
 
@@ -56,6 +61,7 @@ body {
 .nav-principal-item a:hover 
 {
     color: #f4a000;
+    
 }
 
 .name-cinema
@@ -65,7 +71,7 @@ body {
 }
 
 
-/*---------------Home Front---------------*/
+/*--------------- Home_Front ---------------*/
 
 .home-movie-picture-one
 {
@@ -101,10 +107,10 @@ body {
 
 .color-logo 
 {
-    font-weight: 900;
+    font-weight: 400;
     color: #fdc112;
 }
-/*---------------Show---------------*/
+/*--------------- Show ---------------*/
 
 .home-bloc-movie-picture-show
 {
@@ -117,11 +123,6 @@ body {
 .home-bloc-movie-information-show 
 {
     margin-left: 50px;
-}
-
-.movies-title-show
-{
-    text-decoration: underline;
 }
 
 .synopsis
@@ -137,12 +138,12 @@ body {
 
 .movies-genres 
 {
-    font-size: 1.2rem;
-    color: #f4a000;
+    font-size: 1rem;
+    color: #ffff;
     text-shadow: 0px 4px 4px #1c1a19;
 }
 
-/*---------------Admin---------------*/
+/*--------------- Admin ---------------*/
 
  .active {
     color: #f4a000;
@@ -185,7 +186,7 @@ td
     border-top: 1px solid black;
 }
 
-/*---------------Admin_Nav---------------*/
+/*--------------- Admin_Nav ---------------*/
 .title-add
 {
     display: flex;
@@ -244,3 +245,62 @@ td
     border: 1px solid transparent;
     text-shadow: 0px 4px 4px #1c1a19;
 }
+
+/*--------------- Footer --------------*/
+
+footer
+{
+    height: 90px;
+    margin-top: 5%;
+    color: #ffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-nav
+{
+    text-align: center;
+}
+
+.footer-nav-link
+{
+    color: #ffff;
+    padding-right: 2%;
+    padding-top: 90px;
+    text-decoration: none;
+}
+.footer-nav-link :hover
+{
+    color: #f4a000;
+}
+
+.footer-nav-made
+{
+    font-size: 0.8rem;
+}
+
+/*--------------- Legals_Mentions --------------*/
+
+.legals
+{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h1, h2{
+    color: #f4a000;
+    text-shadow: 0px 4px 4px #1c1a19;
+}
+.mention-link
+{
+    color: #ffff;
+    text-decoration: none;
+}
+.mention-link :hover
+{
+    color: #f4a000;
+}
+

@@ -64,15 +64,18 @@
 
         <main id="wrapper">
         {% block body %}{% endblock %}
-        </main>
 
         <footer>
             <div class="footer-nav">
             <a class="footer-nav-link" href="{{ path('legal_mention')}}">Mentions légales</a>
             <a class="footer-nav-link" href="mailto:laura@2dbullemovie.com">Contactez-nous</a>
-            <p class="footer-nav-made">2dbulle Movie made with &#169; by <i>#teamsymfony</i></p>
-    </div>
+            <p class="footer-nav-made"><i>2<span class="color-logo">db</span>ulle Movie made with &#169; by #teamsymfony</i></p>
+            </div>
         </footer>
+        </main>
+
+
+
         {% block javascripts %}
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
         {% endblock %}

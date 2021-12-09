@@ -16,11 +16,11 @@ class MovieController extends AbstractController
             'movie_list' => $movieRepository->findAllOrderedDQL(),
         ]);
     }
-
+    
     #[Route('/mentions-legales', name: 'legal_mention')]
     public function legal():Response
     {
-        return $this->render('main/legal_mention.html.tiwg');
+        return $this->render('main/legal_mention.html.twig');
     } 
 
     #[Route('/{id}', name:'movie_show', methods:['GET'])]
@@ -34,6 +34,4 @@ class MovieController extends AbstractController
             'movie' => $movie,
         ]);
     }
-    
-
 }
