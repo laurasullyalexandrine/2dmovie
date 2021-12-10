@@ -1,7 +1,10 @@
 # Read the documentation: https://symfony.com/doc/current/bundles/StofDoctrineExtensionsBundle/index.html
 # See the official DoctrineExtensions documentation for more details: https://github.com/Atlantic18/DoctrineExtensions/tree/master/doc/
 stof_doctrine_extensions:
+    # Le fichier est configuré en anglais en_US alors on le passe en français
     default_locale: fr_FR
+    # On relie le fichier à Doctrine
     orm:
+        # On lui précise que la connexion par défaut sluggable pour lui indique qu'a partir de Doctrine je veux pouvoir utiliser l'extention 'sluggable'
         default:
             sluggable: true

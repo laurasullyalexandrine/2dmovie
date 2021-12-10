@@ -26,6 +26,12 @@ class Movie
     private $title;
 
     /**
+     * @Gedmo\Slug(fields={"title"})
+     * @ORM\Column(type="string", length=128)
+     */
+    private $slug;
+
+    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $picture;
@@ -50,10 +56,6 @@ class Movie
      */
     private $castings;
 
-    /**
-     * @ORM\Column(type="string", length=128)
-     */
-    private $slug;
 
     public function __construct()
     {
@@ -83,6 +85,19 @@ class Movie
         $this->title = $title;
 
         return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    
+    public function setSlug(string $slug): self
+    {
+    $this->slug = $slug;
+
+    return $this;
     }
 
     public function getPicture(): ?string
@@ -171,18 +186,6 @@ class Movie
                 $casting->setMovie(null);
             }
         }
-
-        return $this;
-    }
-
-    public function getSlug(): ?string
-    {
-        return $this->slug;
-    }
-
-    public function setSlug(string $slug): self
-    {
-        $this->slug = $slug;
 
         return $this;
     }

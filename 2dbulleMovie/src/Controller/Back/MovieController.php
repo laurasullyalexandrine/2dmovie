@@ -73,7 +73,7 @@ class MovieController extends AbstractController
     {
         // récupérer une instance de movieRepository
         $movie = $movieRepository->findOneWithGenre($id);
-        //dd($movie);
+        // dd($movie);
         return $this->render('back/movie/read.html.twig', [
             'movie' => $movie,
         ]);
@@ -88,12 +88,12 @@ class MovieController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid())
         {
-            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager = $this->getDoctrine()->getManager();// On va chercher Doctrine et dans Doctrine on va chercher l'entityManager
 
             $movie->setUpdatedAt(new \DateTimeImmutable());
             $picture = $form->get('picture')->getData();
             $fileUploader->moveMoviePicture($picture, $movie);
-
+            $fileUploader->slugifyForMovie($movie);
             $entityManager->flush();
 
             $this->addFlash('success', 'Movie `' . $movie->getTitle() . '` a bien été mis à jour !');
