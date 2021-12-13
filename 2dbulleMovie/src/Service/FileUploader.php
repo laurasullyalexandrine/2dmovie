@@ -52,32 +52,5 @@ class FileUploader
             $movie->setPicture($pictureName);
         }
     }
-
-    /**
-     * Étape 1: on crée un slug d'une chaine de caractère
-     * Fonction qui permet de générer le slug d'une chaine de caractère
-     *
-     * @param [type] $string
-     * @return $string
-     */
-    public function slugify($string) 
-    {
-        return $this->slugger->slug(strtolower($string));
-    }
-
-    /**
-     * Étapes 2: On applique la fonction slugify au nom d'un film 
-     * Fonction qui permet de générer un slug pour un film.
-     * Attention il faut faire un flush pour les modifications soient prises en compte.
-     * @param Movie $movie
-     * @return $movie
-     */
-    public function slugifyForMovie(Movie $movie)
-    {
-        $movieSlug = $this->slugify($movie->getTitle());
-        $movieSlug->setSlug($movieSlug);
-
-        return $movie;
-    }
 }
 

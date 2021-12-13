@@ -7,12 +7,18 @@
 {% block body %}
 
 <section>
+<h1 class="name-site">A l'affiche cette semaine des cinémas 2<span class="color-logo">db</span>ulle Movie</h1>
 <div class="home-movie-picture-one">
     {% for movie in movie_list|slice(0,6) %}
-        <div class="home-movie-picture"><a href="{{ path('movie_show', {id: movie.id}) }}"><img class ="home-bloc-movie-picture"src="{{ asset('uploads/' ~ movie.picture ) }}" width="290px" height="410px" alt="picture_movie"></a>
-            <h1 class="movies-title"> <strong class="movies-title-strong"><a class ="names-strong-link" href="{{ path('movie_show', {id: movie.id}) }}"> {{ movie.title }}</a></strong></h1>
+        <div class="home-movie-picture"><a href="{{ path('movie_show_slug', {slug: movie.slug}) }}"><img class ="home-bloc-movie-picture"src="{{ asset('uploads/' ~ movie.picture ) }}" width="290px" height="410px" alt="picture_movie"></a>
+            <h2 class="movies-title"> <strong class="movies-title-strong"><a class ="names-strong-link" href="{{ path('movie_show_slug', {slug: movie.slug}) }}"> {{ movie.title }}</a></strong></h2>
         </div>
     {% endfor %}
+</div>
+
+<div class="soon">
+<h2 class="soon-movies">Prochainement à l'affiche</h2>
+
 </div>
 </section>
 {% endblock %}
