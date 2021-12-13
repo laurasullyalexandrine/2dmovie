@@ -6,6 +6,7 @@ use App\Repository\MovieRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass=MovieRepository::class)
@@ -23,6 +24,12 @@ class Movie
      * @ORM\Column(type="string", length=128)
      */
     private $title;
+
+    /**
+     * @Gedmo\Slug(fields={"title"})
+     * @ORM\Column(type="string", length=128, nullable=true)
+     */
+    private $slug;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -48,6 +55,7 @@ class Movie
      * @ORM\OneToMany(targetEntity=Casting::class, mappedBy="movie")
      */
     private $castings;
+
 
     public function __construct()
     {
@@ -77,6 +85,19 @@ class Movie
         $this->title = $title;
 
         return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    
+    public function setSlug(string $slug): self
+    {
+    $this->slug = $slug;
+
+    return $this;
     }
 
     public function getPicture(): ?string

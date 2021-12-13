@@ -28,6 +28,11 @@ class MovieType extends AbstractType
                 'expanded' => true, // on passe à false si on ne veut pas afficher une liste de case à cocher
             ])
 
+            ->add('castings', null, [
+                'label' => 'Acteurs associés : ',
+                'expanded' => true, // on passe à false si on ne veut pas afficher une liste de case à cocher
+            ])
+
             ->add('picture', FileType::class,
             [
                 'label' => 'Affiche du film : ',

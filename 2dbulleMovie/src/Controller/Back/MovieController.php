@@ -6,6 +6,7 @@ use App\Entity\Movie;
 use App\Form\MovieType;
 use App\Repository\MovieRepository;
 use App\Service\FileUploader;
+use App\Service\Slugger;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,7 +33,7 @@ class MovieController extends AbstractController
     }
 
     #[Route('/admin/movie/new', name:'admin_movie_add')]
-    public function add(Request $request, FileUploader $fileUploader): Response
+    public function add(Request $request, FileUploader $fileUploader, Slugger $slugger): Response
     {
         $movie = new Movie();
         // je crée un objet form type et je le fait correspondre à son entité => Movie
@@ -50,8 +51,7 @@ class MovieController extends AbstractController
             $this->entityManager->persist($movie); // On demande à ajouter les nouvelles données Movie dans la BDD.
             $picture = $form->get('picture')->getData(); // On récupère les données soumises dans le champ picture.
             $fileUploader->moveMoviePicture($picture, $movie); // On les traite ensuite avec notre Service FileUploader.
-
-            
+            $slugger->SluggigyMovieName($movie);
             $this->entityManager->flush(); // On Pousse le tout dans la BDD.
 
             $this->addFlash('succes', 'Votre film a bien été ajouté au site !'); // Message si succès
@@ -69,10 +69,10 @@ class MovieController extends AbstractController
     }
 
     #[Route('/admin/movie/{id}', name: 'admin_movie_read')]
-    public function read($id, MovieRepository $movieRepository): Response
+    public function read(Movie $movie): Response
     {
         // récupérer une instance de movieRepository
-        $movie = $movieRepository->findOneWithGenre($id);
+        //$movie = $movieRepository->findOneWithGenre($id);
         //dd($movie);
         return $this->render('back/movie/read.html.twig', [
             'movie' => $movie,
@@ -88,12 +88,11 @@ class MovieController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid())
         {
-            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager = $this->getDoctrine()->getManager();// On va chercher Doctrine et dans Doctrine on va chercher l'entityManager
 
             $movie->setUpdatedAt(new \DateTimeImmutable());
             $picture = $form->get('picture')->getData();
             $fileUploader->moveMoviePicture($picture, $movie);
-
             $entityManager->flush();
 
             $this->addFlash('success', 'Movie `' . $movie->getTitle() . '` a bien été mis à jour !');

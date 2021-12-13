@@ -32,10 +32,9 @@ class MovieRepository extends ServiceEntityRepository
             LEFT JOIN c.person p
             WHERE m.id = :id
             ORDER BY m.title DESC 
-            ");
-            
-            $query->setParameter(':id', $id);
-
+        ");
+        
+        $query->setParameter(':id', $id);
 
         // version avec le queryBuilder
         //$qb = $this->createQueryBuilder('m');
