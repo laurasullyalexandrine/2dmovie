@@ -5,8 +5,9 @@
         <title>{% block title %}Welcome !{% endblock %}</title>
        
         <link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('css/reset.css') }}"/>
+        <link href="https://fonts.googleapis.com/css2?family=Lato&family=Montserrat&family=Oswald&family=Roboto&display=swap"rel="stylesheet">
         {% block stylesheets %}
-        
         {% endblock %}
     </head>
 
@@ -75,6 +76,8 @@
         <main id="wrapper">
         {% block body %}{% endblock %}
 
+
+        </main>
         <footer>
             <div class="footer-nav">
             <a class="footer-nav-link" href="{{ path('legal_mention')}}">Mentions légales</a>
@@ -82,8 +85,6 @@
             <p class="footer-nav-made"><i>2<span class="color-logo">db</span>ulle Movie made with &#169; by #teamsymfony</i></p>
             </div>
         </footer>
-        </main>
-
 
 
         {% block javascripts %}

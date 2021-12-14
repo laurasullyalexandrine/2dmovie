@@ -19,7 +19,7 @@ class MovieController extends AbstractController
         ]);
     }
 
-    #[Route('/movie/{slug}', name:'movie_show_slug', methods:['GET'])]
+    #[Route('/film/{slug}', name:'movie_show_slug', methods:['GET'])]
     public function show(Movie $movie, Slugger $slugger): Response
     {
         $movie = $slugger->SluggigyMovieName($movie);
@@ -37,7 +37,7 @@ class MovieController extends AbstractController
         // ]);
     }
 
-    #[Route('/movie/{slug}', name:'movie_show_slug', methods:['GET'])]
+    #[Route('/film/{slug}', name:'movie_show_slug', methods:['GET'])]
     public function showSlug(Movie $movie) : Response
     {
         return $this->render(
