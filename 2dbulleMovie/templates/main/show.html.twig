@@ -19,7 +19,7 @@
             <h2>Acteurs - Actrices :</h2>
             {% for casting in movie.castings %}
             <p class="movies-persons">Acteur : {{casting.person.name}}</p> 
-            <p class="movies-casting">Role : {{ casting.role }}</p>
+            <p class="movies-casting">Role : {{ casting.personage}}</p>
             {% endfor %} 
 
             <p class="synopsis">Synopsis</p>

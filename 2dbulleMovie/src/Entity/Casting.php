@@ -22,7 +22,7 @@ class Casting
     /**
      * @ORM\Column(type="string", length=128)
      */
-    private $role;
+    private $personage;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
@@ -41,11 +41,13 @@ class Casting
 
     /**
      * @ORM\ManyToOne(targetEntity=Movie::class, inversedBy="castings")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $movie;
 
     /**
      * @ORM\ManyToMany(targetEntity=Person::class, inversedBy="castings")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $person;
 
@@ -55,19 +57,25 @@ class Casting
         $this->person = new ArrayCollection();
     }
 
+    // cette méthode permet de définir le comportement à adopter lorsque l'objet est traité comme une chaine de caractère
+    public function __toString()
+    {   
+           return $this->name;
+    }    
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getRole(): ?string
+    public function getPersonage(): ?string
     {
-        return $this->role;
+        return $this->personage;
     }
 
-    public function setRole(string $role): self
+    public function setPersonage(string $personage): self
     {
-        $this->role = $role;
+        $this->personage = $personage;
 
         return $this;
     }

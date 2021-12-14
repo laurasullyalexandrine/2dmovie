@@ -26,6 +26,7 @@ class PersonType extends AbstractType
             // ->add('updatedAt')
             ->add('castings', TextType::class, [
                 'label' => 'Acteurs associés : ',
+                'mapped' => false,
                'constraints' => [
                    new Json()
                ]

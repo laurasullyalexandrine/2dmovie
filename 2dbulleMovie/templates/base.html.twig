@@ -26,7 +26,10 @@
                     <a class="nav-principal-link {% block menu_genre %} {% endblock %}"href="{{ path('admin_genre') }}">Genres</a></li>
 
                     <li class="nav-principal-item"> 
-                    <a class="nav-principal-link {% block menu_person %} {% endblock %}"href="{{ path('admin_person') }}">Acteurs</a></li>
+                    <a class="nav-principal-link {% block menu_casting %} {% endblock %}"href="{{ path('admin_casting') }}">Casting</a></li>
+
+                    <li class="nav-principal-item"> 
+                    <a class="nav-principal-link {% block menu_person %} {% endblock %}"href="{{ path('admin_person') }}">Rôles</a></li>
 
                     {% if is_granted ('ROLE_ADMIN') %}
                     <li class="nav-principal-item"> 
@@ -61,7 +64,14 @@
            {% endif %}
             </nav>
         </header>
-
+{# display every flash message available #}
+{% for label, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="alert alert-{{ label }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
         <main id="wrapper">
         {% block body %}{% endblock %}
 

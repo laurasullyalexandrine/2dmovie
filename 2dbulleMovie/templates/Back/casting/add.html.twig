@@ -1,22 +1,20 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Ajout Casting{% endblock %}
+{% block menu_casting %} active {% endblock %}
 
 {% block body %}
-<h1>Ajout d'un casting</h1>
+<h1>Ajout acteurs.trices</h1>
 
 {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
     {{ form_errors(form) }}
 
-    {{ form_row(form.role) }}
+    {{ form_row(form.personage) }}
+    <br>
     {{ form_row(form.creditOrder) }}
-
-    {{ form_row(form.createdAt) }}
-    {{ form_row(form.updatedAt) }}
-
-    {{ form_row(form.person) }}
+    <br>
     {{ form_row(form.movie) }}
-    
+    <br>
     {{ form_row(form.send) }}
 
 {{ form_end(form) }}

@@ -16,8 +16,8 @@ class CastingController extends AbstractController
     #[Route('/admin/casting', name: 'admin_casting')]
     public function browse(CastingRepository $castingRepository): Response
     {
-        $allCast = $castingRepository->findBy([], ['role' => 'ASC']);
-        return $this->render('back/casting/browse.html.twig', [
+        $allCast = $castingRepository->findBy([], ['personage' => 'ASC']);
+        return $this->render('Back/casting/browse.html.twig', [
             'casting_list' => $allCast,
         ]);
     }
@@ -39,11 +39,11 @@ class CastingController extends AbstractController
             $entityManager->persist($casting);
             $entityManager->flush();
 
-            $this->addFlash('success', 'Casting `' . $casting->getRole() . '` a bien été mis ajouté !');
+            $this->addFlash('success', 'Casting `' . $casting->getPersonage() . '` a bien été mis ajouté !');
             return $this->redirectToRoute('admin_casting');
         }
 
-        return $this->render('admin/casting/add.html.twig', [
+        return $this->render('Back/casting/add.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -51,7 +51,7 @@ class CastingController extends AbstractController
     #[Route('/admin/casting/{id}', name: 'admin_casting_read', methods: ['GET'])]
     public function read(Casting $casting): Response
     {
-        return $this->render('back/casting/read.html.twig', [
+        return $this->render('Back/casting/read.html.twig', [
             'casting' => $casting,
         ]);
     }
@@ -69,12 +69,12 @@ class CastingController extends AbstractController
             $casting->setUpdatedAt(new \DateTimeImmutable());
             $entityManager->flush();
 
-            $this->addFlash('success', 'Casting `' . $casting->getRole() . '` a bien été mis à jour  !');
+            $this->addFlash('success', 'Casting `' . $casting->getPersonage() . '` a bien été mis à jour  !');
 
             return $this->redirectToRoute('admin_casting');
         }
 
-        return $this->render('back/casting_/edit.html.twig', [
+        return $this->render('Back/casting_/edit.html.twig', [
             'form' => $form->createView(),
             'casting' => $casting,
         ]);
@@ -86,7 +86,7 @@ class CastingController extends AbstractController
         $entityManagerInterface->remove($casting);
         $entityManagerInterface->flush();
        
-        $this->addFlash('success', 'Casting `' . $casting->getRole() . '` a bien été supprimé !');
+        $this->addFlash('success', 'Casting `' . $casting->getPersonage() . '` a bien été supprimé !');
 
         return $this->redirectToRoute('admin_casting');
     }

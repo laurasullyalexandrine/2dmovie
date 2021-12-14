@@ -1,18 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edition du casting{{ casting.role }}{% endblock %}
+{% block title %}Edition du casting{{ casting.personage }}{% endblock %}
 {% block menu_casting %} active {% endblock %}
+
 {% block body %}
 <section>
     <div class="home-bloc-movie-picture-show">
         <div class="home-bloc-movie-information-show">
-            <h1>Modifier : {{ casting.role }}</h1>
+            <h1>Modifier : {{ casting.personage }}</h1>
 
                 {{ form_start(form) }}
 
                 {{ form_errors(form) }}
 <br>
-                {{ form_row(form.role) }}
+                {{ form_row(form.personage) }}
 <br>
 
 <br><br>

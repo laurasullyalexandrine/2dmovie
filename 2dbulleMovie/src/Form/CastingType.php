@@ -3,7 +3,11 @@
 namespace App\Form;
 
 use App\Entity\Casting;
+use App\Entity\Movie;
+use App\Entity\Person;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -16,16 +20,16 @@ class CastingType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('role', TextType::class,
+            ->add('personage', TextType::class,
             [
-                'label' => 'Nom du casting : ' ,
+                'label' => 'Nom acteurs.trice : ' ,
                 'constraints' => [
                     new NotBlank(['message' => 'Le champ "Casting" est vide'])
                 ]
             ])
             ->add('creditOrder', IntegerType::class, 
             [
-                'label' => 'Crédit Order : ',
+                'label' => 'Distribution : ',
                 'constraints' => [
                     new NotBlank(),
                     new Length(['min' => 1]),
@@ -33,11 +37,12 @@ class CastingType extends AbstractType
             ])
             // ->add('createdAt')
             // ->add('updatedAt')
-
-            ->add('movie', TextType::class,
-            [
+            // ->add('person')
+            
+            ->add('movie', null, [
                 'label' => 'Titre du film : '
             ])
+
             ->add('send', SubmitType::class,
             ['label' => 'Envoyer'
             ])
