@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Les cinémas 2dbulle Movie !{% endblock %}
+{% block title %} Les cinémas 2dbulle !{% endblock %}
 {% block menu_movie %} active {% endblock %}
 {% block body %}
 
@@ -18,8 +18,7 @@
 
             <h2>Acteurs - Actrices :</h2>
             {% for casting in movie.castings %}
-            <p class="movies-persons">Acteur : {{casting.person.name}}</p> 
-            <p class="movies-casting">Role : {{ casting.personage}}</p>
+            <p class="movies-genres">{{ casting.personage }}</p>
             {% endfor %} 
 
             <p class="synopsis">Synopsis</p>
