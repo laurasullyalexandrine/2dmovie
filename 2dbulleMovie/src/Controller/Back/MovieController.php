@@ -95,15 +95,20 @@ class MovieController extends AbstractController
             $fileUploader->moveMoviePicture($picture, $movie);
             $entityManager->flush();
 
-            $this->addFlash('success', 'Movie `' . $movie->getTitle() . '` a bien été mis à jour !');
+            $this->addFlash('success', 'Le film `' . $movie->getTitle() . '` a bien été mis à jour !');
 
             return $this->redirectToRoute('admin_movie');
         }
-
-        return $this->render('back/movie/edit.html.twig', [
-            'form' => $form->createView(),
-            'movie' => $movie,
-        ]);
+        else 
+        {
+            // Sinon retour au formulaire d'édition de film
+            $this->addFlash('danger', 'Votre film n\'a pas été mis à jour !');
+            return $this->render('back/movie/edit.html.twig', [
+                'form' => $form->createView(),
+                'movie' => $movie,
+            ]);
+        }
+       
     }
 
     #[Route('/admin/movie/delete/{id}', name: 'admin_movie_delete', methods: ['GET'])]
@@ -112,7 +117,7 @@ class MovieController extends AbstractController
         $entityManagerInterface->remove($movie);
 
         $entityManagerInterface->flush();
-        $this->addFlash('success', 'Movie`' . $movie->getTitle() . '` a bien été supprimé !');
+        $this->addFlash('success', 'Le film `' . $movie->getTitle() . '` a bien été supprimé !');
 
         return $this->redirectToRoute('admin_movie');
     }

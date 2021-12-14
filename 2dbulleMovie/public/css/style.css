@@ -5,31 +5,54 @@ body {
     font-family:'Montserrat', sans-serif;
 }
 
-#wrapper,
-#header-navigation
+#wrapper
 {
     margin: auto;
     width: 900px;
+}
+
+#wrapper,
+#header-navigation
+{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-/*--------------- Navigation_Footer---------------*/
-footer,
-#header-navigation
-{
-    border-radius: 5px;
-    background-color: #211f1f;
-    box-shadow: 0px 4px 4px #1c1a19;
+.alert {
+    font-size: 1.2rem;
+    font-family:'Montserrat', sans-serif;
+    margin: 1% 0;
+    text-align: center;
+    text-shadow: 0px 4px 4px #1c1a19;
 }
+
+.alert-success {
+    color: #fff;
+}
+
+.alert-info,
+.form-error-message {
+    color: #ff6100;
+}
+
+.alert-danger {
+    color: #ff0000;
+}
+
+/*--------------- Navigation_Footer---------------*/
 
 #header-navigation
 {
+    width: 1680px;
     height: 260px;
-    position: relative;
-    margin-bottom: 25px;
+    margin: auto;
+    border-radius: 5px;
+    background-color: #211f1f;
+    box-shadow: 0px 4px 4px #1c1a19;
     background-repeat: no-repeat;
-    background-image: url('../images/bobine.png');
+    background-image: url('../images/bobine_v2.png');
+    
 }
+
 
 .nav-principal
 {
@@ -71,6 +94,10 @@ footer,
 
 
 /*--------------- Home_Front ---------------*/
+.now-soon
+{
+
+}
 
 .home-movie-picture-one
 {
@@ -126,18 +153,19 @@ footer,
 
 .synopsis
 {
+    margin-top: 8%;
     font-weight: bold;
     text-decoration: underline;
 }
 
 .paragraph
-{
+{font-size: 0.9rem;
     font-style: italic;
 }
 
 .movies-genres 
 {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: #ffff;
     text-shadow: 0px 4px 4px #1c1a19;
 }
@@ -256,6 +284,7 @@ footer
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #211f1f;
 }
 
 .footer-nav

@@ -23,16 +23,6 @@ class MovieType extends AbstractType
                 ]
             ])
 
-            ->add('genres', null, [
-                'label' => 'Genres associés : ',
-                'expanded' => true, // on passe à false si on ne veut pas afficher une liste de case à cocher
-            ])
-
-            ->add('castings', null, [
-                'label' => 'Acteurs associés : ',
-                'expanded' => true, // on passe à false si on ne veut pas afficher une liste de case à cocher
-            ])
-
             ->add('picture', FileType::class,
             [
                 'label' => 'Affiche du film : ',
@@ -45,7 +35,17 @@ class MovieType extends AbstractType
                         'mimeTypesMessage' => 'La taille maximum de l\'image ne doit pas dépasser 2 MO',
                     ])
                 ]
-            ]);
+            ])
+            
+            ->add('genres', null, [
+                'label' => 'Genres associés : ',
+                'expanded' => true, // on passe à false si on ne veut pas afficher une liste de case à cocher
+            ])
+            ->add('castings', null, [
+                'label' => 'Casting du film : ',
+                'expanded' => true, // on passe à false si on ne veut pas afficher une liste de case à cocher
+            ])
+            ;
     }
     
     public function configureOptions(OptionsResolver $resolver): void

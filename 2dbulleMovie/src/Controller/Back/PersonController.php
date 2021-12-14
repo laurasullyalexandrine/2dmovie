@@ -41,7 +41,7 @@ class PersonController extends AbstractController
             $entityManager->persist($person);
             $entityManager->flush();
 
-            $this->addFlash('success', 'Person `' . $person->getName() . '` a bien été mis ajouté !');
+            $this->addFlash('success', 'Le rôle : `' . $person->getName() . '` a bien été mis ajouté !');
 
             return $this->redirectToRoute('admin_person');
         }
@@ -74,7 +74,7 @@ class PersonController extends AbstractController
             $person->setUpdatedAt(new \DateTimeImmutable());
             $entityManager->flush();
 
-            $this->addFlash('success', 'Person `' . $person->getName() . '` a bien été mis à jour !');
+            $this->addFlash('success', 'Le rôle :`' . $person->getName() . '` a bien été mis à jour !');
 
             return $this->redirectToRoute('admin_person');
         }
@@ -92,7 +92,7 @@ class PersonController extends AbstractController
 
         $entityManagerInterface->flush();
 
-        $this->addFlash('success', 'Person `' . $person->getName() . '` a bien été supprimé !');
+        $this->addFlash('success', 'Le rôle : `' . $person->getName() . '` a bien été supprimé !');
 
         return $this->redirectToRoute('admin_person');
     }

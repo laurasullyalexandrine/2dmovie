@@ -1,15 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} 2dbulle Movie !{% endblock %}
+{% block title %} Les cinémas 2dbulle !{% endblock %}
 {% block menu_home %} active {% endblock %}
 
 
 {% block body %}
 
 <section>
-<h1 class="name-site">A l'affiche cette semaine des cinémas 2<span class="color-logo">db</span>ulle Movie</h1>
+<h2 class="now-soon">A l'affiche </h2>
 <div class="home-movie-picture-one">
-    {% for movie in movie_list|slice(0,6) %}
+    {% for movie in movie_list %}
         <div class="home-movie-picture"><a href="{{ path('movie_show_slug', {slug: movie.slug}) }}"><img class ="home-bloc-movie-picture"src="{{ asset('uploads/' ~ movie.picture ) }}" width="290px" height="410px" alt="picture_movie"></a>
             <h2 class="movies-title"> <strong class="movies-title-strong"><a class ="names-strong-link" href="{{ path('movie_show_slug', {slug: movie.slug}) }}"> {{ movie.title }}</a></strong></h2>
         </div>
@@ -17,7 +17,7 @@
 </div>
 
 <div class="soon">
-<h2 class="soon-movies">Prochainement à l'affiche</h2>
+<h2 class="now-soon">Prochainement à l'affiche</h2>
 
 </div>
 </section>

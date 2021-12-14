@@ -7,14 +7,16 @@
 <section>
     <div class="home-bloc-movie-picture-show">
     <div class="home-bloc-movie-information-show">
-        <h1> Acteur/Actrice : {{ person.name }}</h1>
+        <h1> Rôles : {{ person.name }}</h1>
 
-<h2>Liste des roles associés </h2>
+<h2>Nom de l'acteur.trice </h2>
 {% for casting in  person.castings %}
+<li class="admin-list">{{ casting.personage }} </li>
 
-<li class="admin-list">{{ casting.role }} </li>
-<i>(TODO: méthode custom pour y associer les films)</i> 
 {% endfor %}
+
+<h2>Liste des films associés </h2>
+<i>(TODO: méthode custom pour y associer les films)</i> 
 {# afficher la liste des movies associer au genre (movie.id) et movie.title #}
 
 

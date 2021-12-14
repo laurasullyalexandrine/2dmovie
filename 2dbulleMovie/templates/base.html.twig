@@ -5,8 +5,9 @@
         <title>{% block title %}Welcome !{% endblock %}</title>
        
         <link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('css/reset.css') }}"/>
+        <link href="https://fonts.googleapis.com/css2?family=Lato&family=Montserrat&family=Oswald&family=Roboto&display=swap"rel="stylesheet">
         {% block stylesheets %}
-        
         {% endblock %}
     </head>
 
@@ -26,7 +27,10 @@
                     <a class="nav-principal-link {% block menu_genre %} {% endblock %}"href="{{ path('admin_genre') }}">Genres</a></li>
 
                     <li class="nav-principal-item"> 
-                    <a class="nav-principal-link {% block menu_person %} {% endblock %}"href="{{ path('admin_person') }}">Acteurs</a></li>
+                    <a class="nav-principal-link {% block menu_casting %} {% endblock %}"href="{{ path('admin_casting') }}">Casting</a></li>
+
+                    <li class="nav-principal-item"> 
+                    <a class="nav-principal-link {% block menu_person %} {% endblock %}"href="{{ path('admin_person') }}">Rôles</a></li>
 
                     {% if is_granted ('ROLE_ADMIN') %}
                     <li class="nav-principal-item"> 
@@ -61,10 +65,19 @@
            {% endif %}
             </nav>
         </header>
-
+{# display every flash message available #}
+{% for label, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="alert alert-{{ label }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
         <main id="wrapper">
         {% block body %}{% endblock %}
 
+
+        </main>
         <footer>
             <div class="footer-nav">
             <a class="footer-nav-link" href="{{ path('legal_mention')}}">Mentions légales</a>
@@ -72,8 +85,6 @@
             <p class="footer-nav-made"><i>2<span class="color-logo">db</span>ulle Movie made with &#169; by #teamsymfony</i></p>
             </div>
         </footer>
-        </main>
-
 
 
         {% block javascripts %}

@@ -6,7 +6,7 @@
 
 <section>
     <div class="home-bloc-movie-picture-show">
-                <div class="home-movie_picture"><img class ="home-bloc-movie-picture"src="{{ asset('uploads/' ~ movie.picture) }}" width="360px" height="510px" alt="picture_movie"></a></div>
+                <div class="home-movie_picture"><img class ="home-bloc-movie-picture"src="{{ asset('uploads/' ~ movie.picture) }}" width="295px" height="350px" alt="picture_movie"></a></div>
             
             <div class="home-bloc-movie-information-show">
                 <h1 class="movies-title-show"> <strong class="movies-title-strong-show">{{movie.title}}</strong></h1>
@@ -16,12 +16,8 @@
                 {% endfor %}
 
                 <h2>Acteurs - Actrices</h2>
-                <pre>
-                    {{ dump(movie) }}
-                </pre>
                 {% for casting in movie.castings %}
-                <p class="movies-persons">Acteur/Actrice : {{casting.person.name}}</p> 
-                <p class="movies-casting">Role : {{ casting.role }}</p>
+                <p class="movies-genres">{{ casting.personage }}</p>
                 {% endfor %} 
 
                 <p class="synopsis">Synopsis</p>

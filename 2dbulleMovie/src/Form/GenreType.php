@@ -3,7 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Genre;
-
+use App\Entity\Movie;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -26,7 +27,7 @@ class GenreType extends AbstractType
             ])
             // ->add('createdAt', null)
             // ->add('updatedAt')
-            // ->add('movies', null)
+            // ->add('movies')
             // ->add('validate', SubmitType::class)
         ;
     }

@@ -1,18 +1,21 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Liste Castings{% endblock %}
+{% block menu_casting %} active {% endblock %}
 
 {% block body %}
 <section>
+
     <div class="admin-display">
         <div class="title-add">
-        <h1 class="admin-principal"> Liste des castings</h1>  
+        <h1 class="admin-principal"> Les acteurs et actrices </h1>  
+
         <a class="nav_admin"href="{{ path('admin_casting_add') }}"><button class="submit">Ajouter</button></a>
         </div>
         {% for casting in casting_list %}
             <ul class="admin-movie-list">
                  <li>
-                 <strong class="movies-title-strong"><a class ="names-strong-link" href="{{ path('admin_genre_read', {id: casting.id}) }}"> {{ casting.role }}</a></strong>
+                 <strong class="movies-title-strong"><a class ="names-strong-link" href="{{ path('admin_genre_read', {id: casting.id}) }}"> {{ casting.personage }}</a></strong>
                 </li>
             </ul>
 
