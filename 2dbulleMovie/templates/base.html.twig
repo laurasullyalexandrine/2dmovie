@@ -11,9 +11,11 @@
         {% endblock %}
     </head>
 
-    <body style="background-color:grey">
+    <body>
         <header id="header-navigation">
       {#<div>{{ dump(app.user)}}</div> #}
+      <div class="picture-logo"><a class="logo-link"href="{{ path('home') }}"><img src="/images/logo-cinema-2db.png" width="170px" height="130px"  alt="logo_les_cinémas_2dbubble"></a></div>
+      <h1 id="logo"><a class="logo-link"href="{{ path('home') }}">Les cinémas 2DBubble</a></h1>
             {% if app.user %}
             <nav class="navigation"> 
                 <ul class="nav-principal">
@@ -53,7 +55,7 @@
                     <a class="nav-principal-link"href="#">Créer un compte</a></li> #}
 
                     <li class="nav-principal-item"> 
-                    <a class="nav-principal-link"href="#">Nous contacter</a></li>
+                    <a class="nav-principal-link"href="#">Contactez-nous</a></li>
 
                     {# <li class="nav-principal-item"> 
                     <a class="nav-principal-link"href="#">Mon compte</a></li> #}
@@ -80,9 +82,11 @@
         </main>
         <footer>
             <div class="footer-nav">
-            <a class="footer-nav-link" href="{{ path('legal_mention')}}">Mentions légales</a>
-            <a class="footer-nav-link" href="mailto:laura@2dbullemovie.com">Contactez-nous</a>
-            <p class="footer-nav-made"><i>2<span class="color-logo">db</span>ulle Movie made with &#169; by #teamsymfony</i></p>
+                <div class="block-footer-nav">
+                    <a class="footer-nav-link" href="{{ path('legal_mention')}}">Mentions légales</a>
+                    <a class="footer-nav-link" href="mailto:laura@cinémas2dbubble.com">Contactez-nous</a>
+                </div>
+                <p class="footer-nav-made"><i>Les cinémas 2<span class="color-logo">DB</span>ubble made with Symfony &#169; by #teamsymfony</i></p>
             </div>
         </footer>
 

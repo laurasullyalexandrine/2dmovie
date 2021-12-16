@@ -39,7 +39,7 @@ class CastingController extends AbstractController
             $entityManager->persist($casting);
             $entityManager->flush();
 
-            $this->addFlash('success', 'Casting `' . $casting->getPersonage() . '` a bien été mis ajouté !');
+            $this->addFlash('success', 'L\'acteur.trice `' . $casting->getPersonage() . '` a bien été ajouté !');
             return $this->redirectToRoute('admin_casting');
         }
 
@@ -69,7 +69,7 @@ class CastingController extends AbstractController
             $casting->setUpdatedAt(new \DateTimeImmutable());
             $entityManager->flush();
 
-            $this->addFlash('success', 'Casting `' . $casting->getPersonage() . '` a bien été mis à jour  !');
+            $this->addFlash('success', 'L\'acteur.trice `' . $casting->getPersonage() . '` a bien été mis à jour  !');
 
             return $this->redirectToRoute('admin_casting');
         }
@@ -86,7 +86,7 @@ class CastingController extends AbstractController
         $entityManagerInterface->remove($casting);
         $entityManagerInterface->flush();
        
-        $this->addFlash('success', 'Casting `' . $casting->getPersonage() . '` a bien été supprimé !');
+        $this->addFlash('success', 'L\'acteur.trice `' . $casting->getPersonage() . '` a bien été supprimé !');
 
         return $this->redirectToRoute('admin_casting');
     }

@@ -1,32 +1,31 @@
 css
 /*--------------- Home ---------------*/
 
-body {
-    font-family:'Montserrat', sans-serif;
+body
+{
+    background-color: gray;
 }
 
 #wrapper
 {
     margin: auto;
     width: 900px;
+    font-family: 'Oswald', sans-serif;
 }
 
-#wrapper,
-#header-navigation
-{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
 
 .alert {
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-family:'Montserrat', sans-serif;
-    margin: 1% 0;
+    height: 50px;
     text-align: center;
-    text-shadow: 0px 4px 4px #1c1a19;
+    background-color: #211f1f;
+    box-shadow: 0px 4px 4px #1c1a19;
+    
 }
 
 .alert-success {
-    color: #fff;
+    color: white;
 }
 
 .alert-info,
@@ -38,41 +37,57 @@ body {
     color: #ff0000;
 }
 
-/*--------------- Navigation_Footer---------------*/
+/*--------------- Header ---------------*/
+
+.picture-logo
+{
+    height: 0;
+    position: relative;
+    left: 30px;
+    top: 100px;
+}
 
 #header-navigation
 {
-    width: 1680px;
+    width: 1536px;
     height: 260px;
     margin: auto;
-    border-radius: 5px;
+    display: flex;
     background-color: #211f1f;
     box-shadow: 0px 4px 4px #1c1a19;
     background-repeat: no-repeat;
     background-image: url('../images/bobine_v2.png');
-    
 }
-
 
 .nav-principal
 {
     display: flex;
 }
 
-.nav-principal-item
+#logo
 {
-    margin-top: 190px;
+    position: relative;
+    left: -70px;
+    top: 224px;
+    height: 0;
+}
+.logo-link
+{
+    font-size: 1rem;
+    color: #ffc312;
+    text-decoration: none;
 }
 
-.nav-principal-item 
+.nav-principal-item
 {
-    padding-top: 4%;
+    padding-top: 224px;
     list-style-type: none;
 }
 
+
 .nav-principal-link
 {
-    font-size: 0.9rem;
+    font-size: 1rem;
     margin-right: 15px;
     text-decoration: none;
     color: #ffff;
@@ -82,7 +97,7 @@ body {
 
 .nav-principal-item a:hover 
 {
-    color: #f4a000;
+    color: #ffc312;
     
 }
 
@@ -94,10 +109,7 @@ body {
 
 
 /*--------------- Home_Front ---------------*/
-.now-soon
-{
 
-}
 
 .home-movie-picture-one
 {
@@ -118,17 +130,12 @@ body {
     border: 2px solid black;
 }
 
-.movies-title 
-{
-    font-size: 1.2rem;
-    text-align: center;
-}
-
 .names-strong-link
 {
-    color: #f4a000;
+    font-size: 1.1rem;
+    color: black;
+    line-height: 25px;
     text-decoration: none;
-    text-shadow: 0px 4px 4px #1c1a19;
 }
 
 .color-logo 
@@ -140,8 +147,7 @@ body {
 
 .home-bloc-movie-picture-show
 {
-    width: 900px;
-    margin: auto;
+    margin: 5%;
     display: flex;
     justify-content: center;
 }
@@ -151,21 +157,31 @@ body {
     margin-left: 50px;
 }
 
+.subtitle
+{
+    font-size: 1.2rem;
+    line-height: 25px;
+    margin-top: 2%;
+}
+
 .synopsis
 {
+    font-size: 1rem;
     margin-top: 8%;
-    font-weight: bold;
+    line-height: 25px;
     text-decoration: underline;
 }
 
 .paragraph
-{font-size: 0.9rem;
-    font-style: italic;
+{
+    font-size: 0.9rem;
+    line-height: 20px;
 }
 
 .movies-genres 
 {
-    font-size: 0.9rem;
+    font-size: 1rem;
+    line-height: 20px;
     color: #ffff;
     text-shadow: 0px 4px 4px #1c1a19;
 }
@@ -173,7 +189,7 @@ body {
 /*--------------- Admin ---------------*/
 
  .active {
-    color: #f4a000;
+    color: #ffc312;
  }
 
 .active a:hover
@@ -185,55 +201,35 @@ body {
 {
     font-size: 1.8rem;
 }
+
 .admin-display
 {
-    width: 900px;
-    margin: auto;
+    margin: 5% 0;
 }
 
 .admin-footer
 {
+    margin-top: 5%;
     display: flex;
     justify-content: space-between;
 }
 
-.admin-list,
-th
+.admin-list
 {
-    padding-right: 2%;
-}
-
-th
-{
-    text-align: center;
-}
-
-td
-{
-    border-top: 1px solid black;
+    line-height: 25px;
 }
 
 /*--------------- Admin_Nav ---------------*/
-.title-add
-{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.nav_admin
-{
-    color: black;
-    font-size: 1rem;
-    text-decoration: none;
-}
 
 .submit
 {
     cursor: pointer;
+    font-family: 'Oswald';
     font-size: 1rem;
+    margin: 3% 0 5%;
+    border: none;
     border-radius: 5px;
-    background-color: gray;
+    background-color: #ffc312;
     box-shadow: 0px 4px 4px #1c1a19;
 }
 
@@ -241,8 +237,8 @@ td
 {
     font-size: 0.9rem;
     position: absolute;
-    margin-top: -35px;
-    margin-left: 450px;
+    top: 225px;
+    left: 1100px;
     margin-right: 40px;
     text-align: right;
     color: rgb(134, 134, 134);
@@ -250,17 +246,14 @@ td
 
 .user-co
 {
-    font-size: 0.9rem;
     position: absolute;
-    margin-top: -35px;
-    margin-left: 780px;
-    text-align: right;
-    color: rgb(134, 134, 134);
+    left: 1360px;
+    top: 224px;
 }
 
 .connect
 {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: red;
     text-decoration: none;
 }
@@ -274,61 +267,82 @@ td
     text-shadow: 0px 4px 4px #1c1a19;
 }
 
+.entitled
+{
+    font-size: 1.8rem;
+    color: #ffc312;
+    margin: 3% 0;
+    text-shadow: 0px 4px 4px #1c1a19;
+}
+
+.nav_admin
+{
+    margin-right: 20px;
+}
+
+
 /*--------------- Footer --------------*/
 
 footer
 {
     height: 90px;
-    margin-top: 5%;
-    color: #ffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #211f1f;
-}
-
-.footer-nav
-{
+    color: #fff;
+    padding: 2%;
     text-align: center;
+    display: flex;
+    justify-content: space-between;
+    background-color: #211f1f;
+    box-shadow: 0px 4px 4px #1c1a19;
 }
 
 .footer-nav-link
 {
-    color: #ffff;
-    font-size: 0.9rem;
-    padding-right: 5%;
+    margin-right: 30px;
+    color: #fff;
     text-decoration: none;
 }
-.footer-nav-link :hover
-{
-    color: #f4a000;
-}
+
 
 .footer-nav-made
 {
-    font-size: 0.8rem;
+    margin-top: 1%;
+    font-size: 0.9rem;
 }
+
 
 /*--------------- Legals_Mentions --------------*/
 
 .legals
 {
-    text-align: center;
+    
+    padding: 3%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
 }
 
-h1, h2
+.title-ml
 {
-    color: #f4a000;
+    font-size: 1.5rem;
+    margin: 1%;
+}
+
+.mention-title
+{
+    font-size: 1.2rem;
+    margin: 1%;
+}
+
+.title-ml, .mention-title
+{
+    color: #ffc312;
     text-shadow: 0px 4px 4px #1c1a19;
 }
 
-h2 
+.mention-paragraph
 {
-    font-size: 0.9em;
+    line-height: 25px;
 }
+
 .mention-link
 {
     color: #ffff;
@@ -336,6 +350,6 @@ h2
 }
 .mention-link :hover
 {
-    color: #f4a000;
+    color: #ffc312;
 }
 

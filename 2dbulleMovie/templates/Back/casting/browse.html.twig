@@ -7,19 +7,19 @@
 <section>
 
     <div class="admin-display">
-        <div class="title-add">
-        <h1 class="admin-principal"> Les acteurs et actrices </h1>  
-
-        <a class="nav_admin"href="{{ path('admin_casting_add') }}"><button class="submit">Ajouter</button></a>
-        </div>
+        <h1 class="entitled">  Les acteurs et actrices </h1>  
+    
         {% for casting in casting_list %}
             <ul class="admin-movie-list">
                  <li>
-                 <strong class="movies-title-strong"><a class ="names-strong-link" href="{{ path('admin_genre_read', {id: casting.id}) }}"> {{ casting.personage }}</a></strong>
+                 <strong class="movies-title-strong"><a class ="names-strong-link" href="{{ path('admin_casting_read', {id: casting.id}) }}"> {{ casting.personage }}</a></strong>
                 </li>
             </ul>
-
         {% endfor %}
+
+                {% if is_granted('ROLE_ADMIN') %}
+        <a class="nav_admin" href="{{ path('admin_casting_add') }}"><button class="submit">Ajouter</button></a>
+        {% endif %}
         </div>
 </section>
 {# faire la liste des genres avec un lien vers la page read pour avoir le détail de de ce genre#}

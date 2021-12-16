@@ -4,7 +4,11 @@
 {% block menu_casting %} active {% endblock %}
 
 {% block body %}
-<h1>Ajout acteurs.trices</h1>
+
+<section>
+    <div class="home-bloc-movie-picture-show">
+        <div class="home-bloc-movie-information-show">
+            <h2 class="entitled">Ajout acteurs.trices</h1>
 
 {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
     {{ form_errors(form) }}
@@ -15,8 +19,14 @@
     <br>
     {{ form_row(form.movie) }}
     <br>
-    {{ form_row(form.send) }}
-
+    <br><br>
+                <div class="admin-footer">
+                    <button class="submit" type="submit">Créer</button>
+                    <a class="nav_admin"href="{{ path('admin_genre') }}"><button class="submit">Retour</button></a>
+                </div>
+        </div>
+    </div>
+</section>
 {{ form_end(form) }}
 
 {% endblock %}
