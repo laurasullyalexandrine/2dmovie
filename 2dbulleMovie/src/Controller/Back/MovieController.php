@@ -23,7 +23,7 @@ class MovieController extends AbstractController
         $this->entityManager = $entityManager;
     }
 
-    #[Route('/admin/movie', name:'admin_movie')]
+    #[Route('/admin/film', name:'admin_movie')]
     public function browse(MovieRepository $movieRepository): Response
     {
         $allMovie = $movieRepository->findBy([], ['title' => 'ASC']);
@@ -32,7 +32,7 @@ class MovieController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/movie/new', name:'admin_movie_add')]
+    #[Route('/admin/film/nouveau', name:'admin_movie_add')]
     public function add(Request $request, FileUploader $fileUploader, Slugger $slugger): Response
     {
         $movie = new Movie();
@@ -58,24 +58,39 @@ class MovieController extends AbstractController
 
             return $this->redirectToRoute('admin_movie'); // retour sur l'admininstration des films avec le nouveau film
         }
-        // Sinon retour au formulaire d'ajout de film
-        else {
-
+        else
+        {
             $this->addFlash('danger', 'Votre film n\'a pas pu être ajouté !');
             return $this->render('back/movie/add.html.twig', [
                 'form' => $form->createView(),
             ]);
         }
+
     }
 
-    #[Route('/admin/movie/{id}', name: 'admin_movie_read')]
-    public function read(Movie $movie): Response
+    #[Route('/admin/film/{slug}', name: 'admin_movie_slug', methods:['GET'])]
+    public function read(Movie $movie, Slugger $slugger): Response
     {
+        $movie = $slugger->SluggigyMovieName($movie);
+
+        $this->getDoctrine()->getManager()->flush();
+
+        return $this->redirectToRoute('admin_movie_slug', ['slug'=> $movie->getSlug()]);
         // récupérer une instance de movieRepository
         //$movie = $movieRepository->findOneWithGenre($id);
         //dd($movie);
-        return $this->render('back/movie/read.html.twig', [
-            'movie' => $movie,
+
+        //return $this->render('back/movie/read.html.twig', [
+            //'movie' => $movie,
+        //]);
+    }
+
+    #[Route('/admin/film/{slug}', name:'admin_movie_slug', methods:['GET'])]
+    public function showSlug(Movie $movie) : Response
+    {
+        return $this->render(
+            'Back/movie/read.html.twig', 
+            ['movie' => $movie
         ]);
     }
 
@@ -86,8 +101,7 @@ class MovieController extends AbstractController
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid())
-        {
+        if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();// On va chercher Doctrine et dans Doctrine on va chercher l'entityManager
 
             $movie->setUpdatedAt(new \DateTimeImmutable());
@@ -99,16 +113,10 @@ class MovieController extends AbstractController
 
             return $this->redirectToRoute('admin_movie');
         }
-        else 
-        {
-            // Sinon retour au formulaire d'édition de film
-            $this->addFlash('danger', 'Votre film n\'a pas été mis à jour !');
-            return $this->render('back/movie/edit.html.twig', [
+        return $this->render('back/movie/edit.html.twig', [
                 'form' => $form->createView(),
                 'movie' => $movie,
             ]);
-        }
-       
     }
 
     #[Route('/admin/movie/delete/{id}', name: 'admin_movie_delete', methods: ['GET'])]

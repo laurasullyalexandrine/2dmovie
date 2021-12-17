@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Les cinémas 2dbulle !{% endblock %}
+{% block title %}Les cinémas 2DBubble !{% endblock %}
 {% block menu_home %} active {% endblock %}
 
 
 {% block body %}
 
 <section>
-<h2 class="now-soon">A l'affiche </h2>
+<h2 class="entitled">A l'affiche </h2>
 <div class="home-movie-picture-one">
     {% for movie in movie_list %}
         <div class="home-movie-picture"><a href="{{ path('movie_show_slug', {slug: movie.slug}) }}"><img class ="home-bloc-movie-picture"src="{{ asset('uploads/' ~ movie.picture ) }}" width="290px" height="410px" alt="picture_movie"></a>
@@ -17,7 +17,7 @@
 </div>
 
 <div class="soon">
-<h2 class="now-soon">Prochainement à l'affiche</h2>
+<h2 class="entitled">Prochainement à l'affiche</h2>
 
 </div>
 </section>

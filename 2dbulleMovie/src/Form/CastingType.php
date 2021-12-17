@@ -43,9 +43,7 @@ class CastingType extends AbstractType
                 'label' => 'Titre du film : '
             ])
 
-            ->add('send', SubmitType::class,
-            ['label' => 'Envoyer'
-            ])
+            //->add('send')
         ;
     }
 

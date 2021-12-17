@@ -6,7 +6,7 @@
 <section>
     <div class="home-bloc-movie-picture-show">
         <div class="home-bloc-movie-information-show">
-            <h1>Modifier : {{ movie.title }}</h1>
+            <h1 class="entitled">Modifier : {{ movie.title }}</h1>
 
                 {{ form_start(form) }}
 
@@ -14,9 +14,8 @@
 <br>
                 {{ form_row(form.title) }}
 <br>
-                {{ form_row(form.genres) }}
-<br>
-                {{ form_row(form.castings) }}
+
+                {{ form_row(form.genres, {'label' : 'Genres associés :'}, {'attr': {'class': 'subtitle'}}) }}
 <br>
                 {{ form_row(form.picture) }}
 <br><br>

@@ -6,20 +6,18 @@
 
 <section>
     <div class="admin-display">
-        <div class="title-add">
-            <h1 class="admin-principal"> Liste des films</h1>  
-            
-            {% if is_granted('ROLE_ADMIN') %}
-            <a class="nav_admin" href="{{ path('admin_movie_add') }}"><button class="submit">Ajouter</button></a>
-            {% endif %}
-        </div>
+            <h1 class="entitled"> Liste des films</h1>  
             {% for movie in movie_list %}
                 <ul class="admin-movie-list">
                     <li>
-                        <strong class="movies-title-strong"><a class ="names-strong-link" href="{{ path('admin_movie_read', {id: movie.id}) }}"> {{ movie.title }}</a></strong>
+                        <strong class="movies-title-strong"><a class ="names-strong-link" href="{{ path('admin_movie_slug', {slug: movie.slug}) }}"> . {{ movie.title }}</a></strong>
                     </li>
                 </ul>
             {% endfor %}
+
+            {% if is_granted('ROLE_ADMIN') %}
+            <a class="nav_admin" href="{{ path('admin_movie_add') }}"><button class="submit">Ajouter</button></a>
+            {% endif %}
     </div>
 </section>
 

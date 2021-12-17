@@ -60,7 +60,7 @@ class Casting
     // cette méthode permet de définir le comportement à adopter lorsque l'objet est traité comme une chaine de caractère
     public function __toString()
     {   
-           return $this->name;
+           return $this->personage;
     }    
 
     public function getId(): ?int

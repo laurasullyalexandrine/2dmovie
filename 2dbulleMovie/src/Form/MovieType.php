@@ -41,10 +41,7 @@ class MovieType extends AbstractType
                 'label' => 'Genres associés : ',
                 'expanded' => true, // on passe à false si on ne veut pas afficher une liste de case à cocher
             ])
-            ->add('castings', null, [
-                'label' => 'Casting du film : ',
-                'expanded' => true, // on passe à false si on ne veut pas afficher une liste de case à cocher
-            ])
+            // ->add('castings)
             ;
     }
     
