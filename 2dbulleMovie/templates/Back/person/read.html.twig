@@ -7,9 +7,13 @@
 <section>
     <div class="home-bloc-movie-picture-show">
     <div class="home-bloc-movie-information-show">
-        <h1> Rôles : {{ person.name }}</h1>
+        <h1 class="entitled"> {{ person.name }}</h1>
 
-<h2>Nom de l'acteur.trice </h2>
+<h2 class="subtitle">Nom de l'acteur.trice </h2>
+
+<pre>
+    {{ dump(person) }}
+</pre>
 {% for casting in  person.castings %}
 <li class="admin-list">{{ casting.personage }} </li>
 

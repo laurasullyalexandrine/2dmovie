@@ -58,10 +58,14 @@ class MovieController extends AbstractController
 
             return $this->redirectToRoute('admin_movie'); // retour sur l'admininstration des films avec le nouveau film
         }
-        $this->addFlash('danger', 'Votre film n\'a pas pu être ajouté !');
-        return $this->render('back/movie/add.html.twig', [
-            'form' => $form->createView(),
-        ]);
+        else
+        {
+            $this->addFlash('danger', 'Votre film n\'a pas pu être ajouté !');
+            return $this->render('back/movie/add.html.twig', [
+                'form' => $form->createView(),
+            ]);
+        }
+
     }
 
     #[Route('/admin/film/{slug}', name: 'admin_movie_slug', methods:['GET'])]
@@ -97,8 +101,7 @@ class MovieController extends AbstractController
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid())
-        {
+        if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();// On va chercher Doctrine et dans Doctrine on va chercher l'entityManager
 
             $movie->setUpdatedAt(new \DateTimeImmutable());
@@ -110,16 +113,10 @@ class MovieController extends AbstractController
 
             return $this->redirectToRoute('admin_movie');
         }
-        else 
-        {
-            // Sinon retour au formulaire d'édition de film
-            $this->addFlash('danger', 'Votre film n\'a pas été mis à jour !');
-            return $this->render('back/movie/edit.html.twig', [
+        return $this->render('back/movie/edit.html.twig', [
                 'form' => $form->createView(),
                 'movie' => $movie,
             ]);
-        }
-       
     }
 
     #[Route('/admin/movie/delete/{id}', name: 'admin_movie_delete', methods: ['GET'])]

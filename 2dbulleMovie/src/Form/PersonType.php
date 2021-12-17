@@ -24,12 +24,9 @@ class PersonType extends AbstractType
             ])
             // ->add('createdAt')
             // ->add('updatedAt')
-            ->add('castings', TextType::class, [
+            ->add('castings', null, [
                 'label' => 'Acteurs associés : ',
-                'mapped' => false,
-               'constraints' => [
-                   new Json()
-               ]
+                'expanded' => true, // on passe à false si on ne veut pas afficher une liste de case à cocher
             ])
         ;
     }

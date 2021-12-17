@@ -12,12 +12,12 @@
                 <h1 class="entitled"> <strong class="movies-title-strong-show">{{movie.title}}</strong></h1>
                 <h2 class="subtitle">Genres</h2>
                 {% for genre in movie.genres %}
-                <p class="movies-genres">{{genre.name}}</p> 
+                <span class="category"> - {{genre.name}}</span>
                 {% endfor %}
 
                 <h2 class="subtitle">Acteurs - Actrices</h2>
                 {% for casting in movie.castings %}
-                <p class="movies-genres">{{ casting.personage }}</p>
+                <span class="category"> - {{ casting.personage }}</span>
                 {% endfor %} 
 
                 <h2 class="subtitle">Synopsis</h2>
