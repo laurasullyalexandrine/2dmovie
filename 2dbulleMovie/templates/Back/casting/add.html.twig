@@ -4,29 +4,23 @@
 {% block menu_casting %} active {% endblock %}
 
 {% block body %}
+<section class="bloc-admin-informations">
+    <h2 class="entitled">Ajout acteurs.trices</h1>
 
-<section>
-    <div class="home-bloc-movie-picture-show">
-        <div class="home-bloc-movie-information-show">
-            <h2 class="entitled">Ajout acteurs.trices</h1>
-
-{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
     {{ form_errors(form) }}
-
-    {{ form_row(form.personage) }}
     <br>
-    {{ form_row(form.creditOrder) }}
+    <span class="label-admin">{{ form_row(form.personage) }}</span>
     <br>
-    {{ form_row(form.movie) }}
+    <span class="label-admin">{{ form_row(form.creditOrder) }}</span>
+    <br>
+    <span class="label-admin">{{ form_row(form.movie) }}</span>
     <br>
     <br><br>
-                <div class="admin-footer">
-                    <button class="submit" type="submit">Créer</button>
-                    <a class="nav_admin"href="{{ path('admin_genre') }}"><button class="submit">Retour</button></a>
-                </div>
-        </div>
+    <div>
+        <a class="nav_admin"href="{{ path('admin_casting_add')}}"><button class="submit" type="submit">Créer</button></a>
+        <a class="nav_admin"href="{{ path('admin_genre') }}"><button class="submit">Retour</button></a>
     </div>
 </section>
 {{ form_end(form) }}
-
 {% endblock %}

@@ -4,36 +4,31 @@
 {% block menu_movie %} active {% endblock %}
 {% block body %}
 
-<section>
-    <div class="home-bloc-movie-picture-show">
-                <div class="home-movie_picture"><img class ="home-bloc-movie-picture"src="{{asset('uploads/' ~ movie.picture) }}" width="310px" height="450px" alt="picture_movie"></a></div>
+<section class="home-bloc-movie-picture-show">
+    <div class="home-movie_picture"><img class ="home-bloc-movie-picture"src="{{asset('uploads/' ~ movie.picture) }}" width="310px" height="450px" alt="picture_movie"></a></div>
             
-            <div class="home-bloc-movie-information-show">
-                <h1 class="entitled"> <strong class="movies-title-strong-show">{{movie.title}}</strong></h1>
-                <h2 class="subtitle">Genres</h2>
+    <div class="home-bloc-movie-information-show">
+        <h1 class="entitled"> <strong class="movies-title-strong-show">{{movie.title}}</strong></h1>
+        <h2 class="subtitle">Genres</h2>
 
-                {% for genre in movie.genres %}
-                <span class="category"> - {{genre.name}}</span>
-                {% endfor %}
-                <pre>
-                    {{ dump(movie) }}
-                </pre>
-                <h2 class="subtitle">Acteurs - Actrices</h2>
-                {% for casting in movie.castings %}
-                <span class="category"> - {{ casting.personage }}</span>
-                {% endfor %} 
+        {% for genre in movie.genres %}
+            <span class="category"> - {{genre.name}}</span>
+        {% endfor %}
 
-                <h2 class="subtitle">Synopsis</h2>
-                <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem libero accusantium modi atque quas magnam asperiores, iure aliquam a at ducimus et qui natus rerum debitis labore ipsam illo corrupti dolore. In, cupiditate numquam natus nam ad earum repellat consequatur aperiam molestias, nesciunt id, tempore ex eius at exercitationem laboriosam debitis! Sed accusantium voluptatum molestias recusandae, mollitia quod accusamus illum deleniti, quis minus cupiditate voluptate perferendis magnam praesentium distinctio dignissimos expedita repudiandae, voluptatibus incidunt. Blanditiis qui, eaque nemo recusandae modi eum impedit fugiat quas! Inventore, laudantium fugiat, omnis alias sint perspiciatis sit ipsam cumque libero quidem neque assumenda necessitatibus vitae?</p>
+        <h2 class="subtitle">Acteurs - Actrices</h2>
+        {% for casting in movie.castings %}
+            <span class="category"> - {{ casting.personage }}</span>
+        {% endfor %} 
+
+        <h2 class="subtitle">Synopsis</h2>
+        <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem libero accusantium modi atque quas magnam asperiores, iure aliquam a at ducimus et qui natus rerum debitis labore ipsam illo corrupti dolore. In, cupiditate numquam natus nam ad earum repellat consequatur aperiam molestias, nesciunt id, tempore ex eius at exercitationem laboriosam debitis! Sed accusantium voluptatum molestias recusandae, mollitia quod accusamus illum deleniti, quis minus cupiditate voluptate perferendis magnam praesentium distinctio dignissimos expedita repudiandae, voluptatibus incidunt. Blanditiis qui, eaque nemo recusandae modi eum impedit fugiat quas! Inventore, laudantium fugiat, omnis alias sint perspiciatis sit ipsam cumque libero quidem neque assumenda necessitatibus vitae?</p>
             
-                <div class="admin-footer">
-                    <a class="nav_admin"href="{{ path('admin_movie') }}"><button class="submit">Retour</button></a>
-                    <a class="nav_admin"href="{{ path('admin_movie_edit', {id : movie.id}) }}"><button class="submit">Editer</button></a>
-                    <a class="nav_admin"href="{{ path('admin_movie_delete', {id : movie.id}) }}"><button class="submit">Supprimer</button></a>
-                </div>
-            </div>
-    
-     </div>
+        <div class="admin-footer">
+            <a class="nav_admin"href="{{ path('admin_movie') }}"><button class="submit">Retour</button></a>
+            <a class="nav_admin"href="{{ path('admin_movie_edit', {id : movie.id}) }}"><button class="submit">Editer</button></a>
+            <a class="nav_admin"href="{{ path('admin_movie_delete', {id : movie.id}) }}"><button class="submit">Supprimer</button></a>
+        </div>
+    </div>
 </section>
 
 {% endblock %}

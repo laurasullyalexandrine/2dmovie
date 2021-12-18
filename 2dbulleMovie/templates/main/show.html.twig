@@ -4,8 +4,7 @@
 {% block menu_movie %} active {% endblock %}
 {% block body %}
 
-<section>
-<div class="home-bloc-movie-picture-show">
+<section class="home-bloc-movie-picture-show">
         <div class="home-movie_picture"><img class ="home-bloc-movie-picture"src="{{ asset('uploads/' ~ movie.picture) }}" width="310px" height="450px" alt="picture_movie"></a></div>
             
         <div class="home-bloc-movie-information-show">
@@ -28,7 +27,6 @@
                 <a class="nav_admin"href="{{ path('home') }}"><button class="submit">Retour</button></a>
             </div>
         </div>
-</div>
 </section>
 
 {% endblock %}

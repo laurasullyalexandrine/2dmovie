@@ -3,28 +3,21 @@
 
 {% block title %}Ajout d'un Genre{% endblock %}
 {% block menu_genre %} active {% endblock %}
+
 {% block body %}
-<section>
-    <div class="home-bloc-movie-picture-show">
-        <div class="home-bloc-movie-information-show">
-            <h2 class="entitled">Ajouter un genre</h1>
+<section class="bloc-admin-informations">
+    <h2 class="entitled">Ajouter un genre</h1>
 
-                {{ form_start(form) }}
-
-                {{ form_errors(form) }}
-<br>
-                {{ form_row(form.name) }}
-<br>
-
-<br><br>
-                <div class="admin-footer">
-                    <button class="submit" type="submit">Créer</button>
-                    <a class="nav_admin"href="{{ path('admin_genre') }}"><button class="submit">Retour</button></a>
-                </div>
-        </div>
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+    <br>
+    <span class="label-admin">{{ form_row(form.name) }}</span>
+    <br>
+    <br><br>
+    <div>
+        <a class="nav_admin"href="{{ path('admin_genre_add')}}"><button class="submit" type="submit">Créer</button></a>
+        <a class="nav_admin"href="{{ path('admin_genre') }}"><button class="submit">Retour</button></a>
     </div>
 </section>
 {{ form_end(form) }}
-
-
 {% endblock %}

@@ -186,13 +186,27 @@ body
 
 /*--------------- Admin ---------------*/
 
- .active {
+input
+{
+    border-radius: 3px;
+}
+.active {
     color: #ffc312;
  }
-
 .active a:hover
 {
     color:#ffff;
+}
+
+.bloc-admin-informations
+{
+    margin: 5%;
+}
+
+.label-admin
+{
+    font-size: 1.1rem;
+    line-height: 25px;
 }
 
 .admin-principal
