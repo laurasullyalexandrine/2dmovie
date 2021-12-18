@@ -5,14 +5,13 @@
 
 {% block body %}
 <section>
-
     <div class="admin-display">
         <h1 class="entitled">  Les acteurs et actrices </h1>  
     
         {% for casting in casting_list %}
             <ul class="admin-list">
                  <li>
-                 <strong><a class ="names-strong-link" href="{{ path('admin_casting_read', {id: casting.id}) }}"> {{ casting.personage }}</a></strong>
+                 <strong class="movies-title-strong"><a class ="names-strong-link" href="{{ path('admin_casting_read', {id: casting.id}) }}"> {{ casting.personage }}</a></strong>
                 </li>
             </ul>
         {% endfor %}

@@ -179,7 +179,7 @@ body
 .category
 {
     font-size: 1rem;
-    line-height: 20px;
+    line-height: 25px;
     color: #ffff;
     text-shadow: 0px 4px 4px #1c1a19;
 }
@@ -198,20 +198,22 @@ input
     color:#ffff;
 }
 
-.bloc-admin-informations
+.container-admin
 {
     margin: 5%;
+    display: flex;
+    justify-content: center;
+}
+
+.bloc-admin-informations
+{
+    margin-left: 50px;
 }
 
 .label-admin
 {
     font-size: 1.1rem;
     line-height: 25px;
-}
-
-.admin-principal
-{
-    font-size: 1.8rem;
 }
 
 .admin-display
@@ -224,11 +226,6 @@ input
     margin-top: 5%;
     display: flex;
     justify-content: space-between;
-}
-
-.admin-list
-{
-    line-height: 25px;
 }
 
 /*--------------- Admin_Nav ---------------*/

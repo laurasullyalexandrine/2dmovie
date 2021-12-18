@@ -5,25 +5,21 @@
 
 {% block body %}
 
-<section>
-    <div class="home-bloc-movie-picture-show">
-    <div class="home-bloc-movie-information-show">
-        <h1 class="entitled"> {{casting.personage}}</h1>
+<section class="container-admin">
+    <div>
+        <h2 class="entitled"> {{casting.personage}}</h2>
+        <h3 class="subtitle">Liste des films associés</h3>
 
-    <h2 class="subtitle">Liste des films associés </h2>
-
-
-    <span class="category"> - {{casting.movie.title}}</span>
+        <li class="category">{{casting.movie.title}}</li>
 
 {# afficher la liste des movies associer au casting (movie.id) et movie.title #}
  
-                <div class="admin-footer">
-                    <a class="nav_admin"href="{{ path('admin_casting') }}"><button class="submit">Retour</button></a>
-                    <a class="nav_admin"href="{{ path('admin_casting_edit', {id : casting.id}) }}"><button class="submit">Editer</button></a>
-                    <a class="nav_admin"href="{{ path('admin_casting_delete', {id : casting.id}) }}"><button class="submit">Supprimer</button></a>
-                </div>
-            </div>
-     </div>
+        <div class="admin-footer">
+            <a class="nav_admin"href="{{ path('admin_casting') }}"><button class="submit">Retour</button></a>
+            <a class="nav_admin"href="{{ path('admin_casting_edit', {id : casting.id}) }}"><button class="submit">Editer</button></a>
+            <a class="nav_admin"href="{{ path('admin_casting_delete', {id : casting.id}) }}"><button class="submit">Supprimer</button></a>
+        </div>
+    </div>
 </section>
 {% endblock %}
 
