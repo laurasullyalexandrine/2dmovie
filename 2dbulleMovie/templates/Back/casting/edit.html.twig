@@ -4,30 +4,22 @@
 {% block menu_casting %} active {% endblock %}
 
 {% block body %}
-<section>
-    <div class="home-bloc-movie-picture-show">
-        <div class="home-bloc-movie-information-show">
-           <h1 class="entitled">Modifier : {{ casting.personage }}</h1>
+<section class="bloc-admin-informations">
+    <h2 class="entitled">Modifier : {{ casting.personage }}</h2>
 
-                {{ form_start(form) }}
-
-                {{ form_errors(form) }}
-<br>
-                {{ form_row(form.personage) }}
-<br>
-                {{ form_row(form.creditOrder) }}
-<br>
-                {{ form_row(form.movie) }}
-<br>
-
-<br><br>
-            <div class="admin-footer">
-                    <button class="submit" type="submit">Modifier</button>
-                    <a class="nav_admin"href="{{ path('admin_casting') }}"><button class="submit">Retour</button></a>
-            </div> 
-        </div>
-    </div>
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+    <br>
+    <span class="label-admin">{{ form_row(form.personage) }}</span>
+    <br>
+    <span class="label-admin">{{ form_row(form.creditOrder) }}</span>
+    <br>
+    <span class="label-admin">{{ form_row(form.movie) }}</span>
+    <br>
+    <div>
+        <a class="nav_admin"href="{{ path('admin_casting') }}"><button class="submit">Retour</button></a>
+        <a class="nav_admin"href="{{ path('admin_casting_edit', {id: casting.id}) }}"><button class="submit" type="submit">Modifier</button></a>
+    </div> 
 </section>
 {{ form_end(form) }}
-
 {% endblock %}

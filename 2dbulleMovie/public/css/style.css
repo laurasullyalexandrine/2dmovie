@@ -15,9 +15,10 @@ body
 
 
 .alert {
-    color: white;
-    font-size: 1rem;
+    color: #0a7fbc;
     font-family:'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 900;
     height: 50px;
     text-align: center;
     padding-top: 1%;
