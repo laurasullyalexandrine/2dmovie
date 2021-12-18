@@ -2,17 +2,12 @@
 
 {% block title %}Créer un utilisateur{% endblock %}
 {% block menu_user %} active {% endblock %}
+
 {% block body %}
-<section>
-    <div class="home-bloc-movie-picture-show">
-        <div class="home-bloc-movie-information-show">
-            <h1>Créer un utilisateur</h1>
+<section class="bloc-admin-informations">
+    <h2 class="entitled">Créer un utilisateur</h2>
 
     {{ include('user/_form.html.twig') }}
-                <div class="admin-footer">
-                    <a class="nav_admin" href="{{ path('admin_user') }}"><button class="submit">Retour</button></a>
-                </div>
-        </div>
-     </div>
+
 </section>
 {% endblock %}

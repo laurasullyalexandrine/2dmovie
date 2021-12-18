@@ -2,26 +2,24 @@
 
 {% block title %}Ajout de film{% endblock %}
 {% block menu_movie %} active {% endblock %}
+
 {% block body %}
 <section class="bloc-admin-informations">
-            <h2 class="entitled">Ajouter un film</h2>
+    <h2 class="entitled">Ajouter un film</h2>
 
-                {{ form_start(form) }}
-
-                {{ form_errors(form) }}
-<br>
-                <span class="label-admin">{{ form_row(form.title) }}</span> 
-<br>
-               <span class="label-admin">{{ form_row(form.genres) }}</span> 
-<br>
-                <span class="label-admin">{{ form_row(form.picture) }}</span> 
-<br><br>
-                <div>
-                    <a class="nav_admin"href="{{ path('admin_movie_add')}}"><button class="submit" type="submit">Créer</button></a>
-                    <a class="nav_admin"href="{{ path('admin_movie') }}"><button class="submit">Retour</button></a>
-                </div>
-
+        {{ form_start(form) }}
+        {{ form_errors(form) }}
+        <br>
+        <span class="label-admin">{{ form_row(form.title) }}</span> 
+        <br>
+        <span class="label-admin">{{ form_row(form.genres) }}</span> 
+        <br>
+        <span class="label-admin">{{ form_row(form.picture) }}</span> 
+        <br>
+        <div>
+            <a class="nav_admin"href="{{ path('admin_movie_add')}}"><button class="submit" type="submit">Créer</button></a>
+            <a class="nav_admin"href="{{ path('admin_movie') }}"><button class="submit">Retour</button></a>
+        </div>
 </section>
 {{ form_end(form) }}
-
 {% endblock %}

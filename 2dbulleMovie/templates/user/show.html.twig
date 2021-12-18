@@ -3,33 +3,27 @@
 {% block title %}Utilisateur{% endblock %}
 {% block menu_user %} active {% endblock %}
 {% block body %}
-<section>
-    <div class="home-bloc-movie-picture-show">
-        <div class="home-bloc-movie-information-show">
-            <h1>Utilisateur : {{user.email}}</h1>
-
-                <table class="table">
-                    <tbody>
-                        <tr>
-                            <th>Id: </th>
-                            <td>{{ user.id }}</td>
-                        </tr>
-                        <tr>
-                            <th>Email: </th>
-                            <td>{{ user.email }}</td>
-                        </tr>
-                        <tr>
-                            <th>Roles: </th>
-                            <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="admin-footer">
-                <a class="nav_admin" href="{{ path('admin_user') }}"><button class="submit">Retour</button></a><br>
-                <a class="nav_admin" href="{{ path('admin_user_edit', {'id': user.id}) }}"><button class="submit">Éditer</button></a>
-                {{ include('user/_delete.html.twig') }}
-                </div>
-        </div>
-     </div>
+<section class="bloc-admin-informations">
+    <h2 class="entitled">Utilisateur : {{user.email}}</h2>
+    <table class="border-line">
+        <tbody>
+            <tr>
+                <th class="border-line">Id: </th>
+                <td class="border-line">{{ user.id }}</td>
+            </tr>
+            <tr>
+                <th class="border-line">Email: </th>
+                <td class="border-line">{{ user.email }}</td>
+            </tr>
+                <tr>
+                    <th class="border-line">Rôles: </th>
+                    <td class="border-line">{{ user.roles ? user.roles|json_encode : '' }}</td>
+                </tr>
+        </tbody>
+    </table>
+    <div>
+        <a class="nav_admin" href="{{ path('admin_user') }}"><button class="submit">Retour</button></a>
+        <a class="nav_admin" href="{{ path('admin_user_edit', {'id': user.id}) }}"><button class="submit">Éditer</button></a>
+    </div>
 </section>    
 {% endblock %}

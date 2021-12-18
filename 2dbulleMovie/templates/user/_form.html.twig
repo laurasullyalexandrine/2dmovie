@@ -1,11 +1,15 @@
 
-{{ form_start(form) }}
+    {{ form_start(form) }}
     {{ form_errors(form) }}
-        {{ form_row(form.email) }}
-        <br>
-        {{ form_row(form.roles) }}
-        <br>
-        {{ form_row(form.plainPassword) }}
-        <br>
-    <br><button class="submit">{{ button_label|default('Enregistrer') }}</button><br>
+    <br>
+    <span class="label-admin">{{ form_row(form.email) }}</span> 
+    <br>
+    <span class="label-admin">{{ form_row(form.roles) }}</span> 
+    <br>
+    <span class="label-admin">{{ form_row(form.plainPassword) }}</span> 
+    <br>
+    <div>
+        <a class="nav_admin" href="{{ path('admin_user') }}"><button class="submit">Retour</button></a>
+        <a class="nav_admin"href="{{ path('admin_user_new')}}"><button class="submit">{{ button_label|default('Enregistrer') }}</button></a>
+    </div>
 {{ form_end(form) }}

@@ -29,7 +29,15 @@ class UserController extends AbstractController
        $form = $this->createForm(UserType::class, $user); // On crée un formulaire avec les proprités de la classe User.
        $form->handleRequest($request); // On récupère les données soumisent par le formulaire
 
-       if ($form->isSubmitted() && $form->isValid()) {
+       if($form->isSubmitted() && !$form->isValid())
+       {
+           $this->addFlash('danger', 'Votre compte n\'a pas pu être créé !');
+           return $this->render('user/new.html.twig', [
+            'user' => $user,
+            'form' => $form->createView()
+        ]);
+       }
+       elseif ($form->isSubmitted() && $form->isValid()) {
            $entityManager = $this->getDoctrine()->getManager();
 
             $rawPassword = $request->request->get('user')['plainPassword']['first']; 
@@ -49,11 +57,13 @@ class UserController extends AbstractController
 
            return $this->redirectToRoute('admin_user');
        }
-
-       return $this->render('user/new.html.twig', [
-           'user' => $user,
-           'form' => $form->createView()
-       ]);
+       else
+       {
+        return $this->render('user/new.html.twig', [
+            'user' => $user,
+            'form' => $form->createView()
+        ]);
+       }
     }
 
 
