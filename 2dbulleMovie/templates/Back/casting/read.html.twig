@@ -12,14 +12,11 @@
 
     <h2 class="subtitle">Liste des films associés </h2>
 
-<pre>
-    {{ dump(casting) }}
-</pre>
-{% for casting in casting.movie %}
 
-<li class="admin-list">{{casting.movie.title}}</li>
+    <span class="category"> - {{casting.movie.title}}</span>
+
 {# afficher la liste des movies associer au casting (movie.id) et movie.title #}
- {% endfor %} 
+ 
                 <div class="admin-footer">
                     <a class="nav_admin"href="{{ path('admin_casting') }}"><button class="submit">Retour</button></a>
                     <a class="nav_admin"href="{{ path('admin_casting_edit', {id : casting.id}) }}"><button class="submit">Editer</button></a>

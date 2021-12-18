@@ -7,13 +7,17 @@
 <section>
     <div class="home-bloc-movie-picture-show">
         <div class="home-bloc-movie-information-show">
-            <h1>Modifier : {{ casting.personage }}</h1>
+           <h1 class="entitled">Modifier : {{ casting.personage }}</h1>
 
                 {{ form_start(form) }}
 
                 {{ form_errors(form) }}
 <br>
                 {{ form_row(form.personage) }}
+<br>
+                {{ form_row(form.creditOrder) }}
+<br>
+                {{ form_row(form.movie) }}
 <br>
 
 <br><br>

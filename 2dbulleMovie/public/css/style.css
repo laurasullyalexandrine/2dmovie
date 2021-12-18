@@ -109,7 +109,7 @@ body
 /*--------------- Home_Front ---------------*/
 
 
-.home-movie-picture-one
+.home-display-movies
 {
     display: flex;
     margin-top: 20px;
@@ -119,6 +119,7 @@ body
 
 .home-movie-picture
 {
+    margin-bottom: 5%;
  justify-content: space-between;
 }
 
@@ -283,6 +284,7 @@ body
 
 footer
 {
+    width: 1536px;
     height: 90px;
     color: #fff;
     padding: 2%;

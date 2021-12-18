@@ -11,10 +11,13 @@
             <div class="home-bloc-movie-information-show">
                 <h1 class="entitled"> <strong class="movies-title-strong-show">{{movie.title}}</strong></h1>
                 <h2 class="subtitle">Genres</h2>
+
                 {% for genre in movie.genres %}
                 <span class="category"> - {{genre.name}}</span>
                 {% endfor %}
-
+                <pre>
+                    {{ dump(movie) }}
+                </pre>
                 <h2 class="subtitle">Acteurs - Actrices</h2>
                 {% for casting in movie.castings %}
                 <span class="category"> - {{ casting.personage }}</span>

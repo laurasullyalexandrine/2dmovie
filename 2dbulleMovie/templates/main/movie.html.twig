@@ -7,8 +7,8 @@
 {% block body %}
 
 <section>
-<h2 class="entitled">A l'affiche </h2>
-<div class="home-movie-picture-one">
+<h2 class="entitled">Actuellement</h2>
+<div class="home-display-movies">
     {% for movie in movie_list %}
         <div class="home-movie-picture"><a href="{{ path('movie_show_slug', {slug: movie.slug}) }}"><img class ="home-bloc-movie-picture"src="{{ asset('uploads/' ~ movie.picture ) }}" width="290px" height="410px" alt="picture_movie"></a>
             <h2 class="movies-title"> <strong class="movies-title-strong"><a class ="names-strong-link" href="{{ path('movie_show_slug', {slug: movie.slug}) }}"> {{ movie.title }}</a></strong></h2>
@@ -17,7 +17,7 @@
 </div>
 
 <div class="soon">
-<h2 class="entitled">Prochainement à l'affiche</h2>
+<h2 class="entitled">Prochainement</h2>
 
 </div>
 </section>
