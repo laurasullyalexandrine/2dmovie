@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\CastingRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Serializer\Annotation\Ignore;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -42,6 +43,7 @@ class Casting
     /**
      * @ORM\ManyToOne(targetEntity=Movie::class, inversedBy="castings")
      * @ORM\JoinColumn(nullable=true)
+     * @Ignore()
      */
     private $movie;
 

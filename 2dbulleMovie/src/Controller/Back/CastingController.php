@@ -59,7 +59,7 @@ class CastingController extends AbstractController
     #[Route('/admin/casting/edit/{id}', name: 'admin_casting_edit', methods: ['GET', 'POST'])]
     public function edit(Casting $casting, Request $request): Response
     {
-        $form = $this->createForm(MovieType::class, $casting);
+        $form = $this->createForm(CastingType::class, $casting);
 
         $form->handleRequest($request);
 
@@ -74,7 +74,7 @@ class CastingController extends AbstractController
             return $this->redirectToRoute('admin_casting');
         }
 
-        return $this->render('Back/casting_/edit.html.twig', [
+        return $this->render('Back/casting/edit.html.twig', [
             'form' => $form->createView(),
             'casting' => $casting,
         ]);
