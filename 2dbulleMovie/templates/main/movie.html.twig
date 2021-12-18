@@ -8,10 +8,10 @@
 
 <section>
 <h2 class="entitled">Actuellement</h2>
-<div class="home-display-movies">
+<div class="display-movies-list">
     {% for movie in movie_list %}
         <div class="home-movie-picture"><a href="{{ path('movie_show_slug', {slug: movie.slug}) }}"><img class ="home-bloc-movie-picture"src="{{ asset('uploads/' ~ movie.picture ) }}" width="290px" height="410px" alt="picture_movie"></a>
-            <h2 class="movies-title"> <strong class="movies-title-strong"><a class ="names-strong-link" href="{{ path('movie_show_slug', {slug: movie.slug}) }}"> {{ movie.title }}</a></strong></h2>
+            <h2 class="movies-title"> <strong><a class ="names-strong-link" href="{{ path('movie_show_slug', {slug: movie.slug}) }}"> {{ movie.title }}</a></strong></h2>
         </div>
     {% endfor %}
 </div>

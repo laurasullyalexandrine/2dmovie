@@ -8,9 +8,9 @@
         <h1 class="entitled"> Les rôles </h1>  
         
         {% for person in person_list %}
-            <ul class="admin-movie-list">
+            <ul class="admin-list">
                  <li>
-                 <strong class="movies-title-strong"><a class ="names-strong-link" href="{{ path('admin_person_read', {id: person.id}) }}"> {{ person.name }}</a></strong>
+                 <strong><a class ="names-strong-link" href="{{ path('admin_person_read', {id: person.id}) }}"> {{ person.name }}</a></strong>
                 </li>
             </ul>
         {% endfor %}

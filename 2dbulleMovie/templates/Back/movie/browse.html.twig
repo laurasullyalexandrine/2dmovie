@@ -8,9 +8,9 @@
     <div class="admin-display">
             <h1 class="entitled"> Liste des films</h1>  
             {% for movie in movie_list %}
-                <ul class="admin-movie-list">
+                <ul class="admin-list">
                     <li>
-                        <strong class="movies-title-strong"><a class ="names-strong-link" href="{{ path('admin_movie_slug', {slug: movie.slug}) }}"> . {{ movie.title }}</a></strong>
+                        <strong><a class ="names-strong-link" href="{{ path('admin_movie_slug', {slug: movie.slug}) }}">{{ movie.title }}</a></strong>
                     </li>
                 </ul>
             {% endfor %}

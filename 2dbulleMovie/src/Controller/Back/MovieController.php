@@ -46,7 +46,14 @@ class MovieController extends AbstractController
          */
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid())
+        if($form->isSubmitted() && !$form->isValid())
+        {
+            $this->addFlash('danger', 'Votre film n\'a pas pu être ajouté !');
+            return $this->render('back/movie/add.html.twig', [
+                'form' => $form->createView(),
+            ]);
+        }
+        elseif ($form->isSubmitted() && $form->isValid())
         {
             $this->entityManager->persist($movie); // On demande à ajouter les nouvelles données Movie dans la BDD.
             $picture = $form->get('picture')->getData(); // On récupère les données soumises dans le champ picture.
@@ -60,7 +67,6 @@ class MovieController extends AbstractController
         }
         else
         {
-            $this->addFlash('danger', 'Votre film n\'a pas pu être ajouté !');
             return $this->render('back/movie/add.html.twig', [
                 'form' => $form->createView(),
             ]);
@@ -101,7 +107,14 @@ class MovieController extends AbstractController
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if($form->isSubmitted() && !$form->isValid())
+        {
+            $this->addFlash('danger', 'Votre film n\'a pas pu être modifié !');
+            return $this->render('back/movie/edit.html.twig', [
+                'form' => $form->createView(),
+            ]);
+        }
+        elseif ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();// On va chercher Doctrine et dans Doctrine on va chercher l'entityManager
 
             $movie->setUpdatedAt(new \DateTimeImmutable());
@@ -113,10 +126,14 @@ class MovieController extends AbstractController
 
             return $this->redirectToRoute('admin_movie');
         }
-        return $this->render('back/movie/edit.html.twig', [
+        else
+        {
+            return $this->render('back/movie/edit.html.twig', [
                 'form' => $form->createView(),
                 'movie' => $movie,
             ]);
+        }
+        
     }
 
     #[Route('/admin/movie/delete/{id}', name: 'admin_movie_delete', methods: ['GET'])]

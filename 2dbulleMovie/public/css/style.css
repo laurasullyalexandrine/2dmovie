@@ -109,7 +109,7 @@ body
 /*--------------- Home_Front ---------------*/
 
 
-.home-display-movies
+.display-movies-list
 {
     display: flex;
     margin-top: 20px;
@@ -134,7 +134,6 @@ body
     font-size: 1.1rem;
     color: black;
     line-height: 25px;
-    text-decoration: none;
 }
 
 .color-logo 
@@ -203,7 +202,7 @@ body
 
 .admin-display
 {
-    margin: 5% 0;
+    margin: 5%;
 }
 
 .admin-footer
