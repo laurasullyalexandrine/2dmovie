@@ -19,18 +19,17 @@ class GenreRepository extends ServiceEntityRepository
         parent::__construct($registry, Genre::class);
     }
 
-    public function findGenreDemo($name) 
+    public function findOneByMovie($id) 
     {
         $entityManager = $this->getEntityManager();
-        $query = $entityManager->createQuery(
-            "
+        $query = $entityManager->createQuery("
             SELECT g, m
             FROM App\Entity\Genre g
-            JOIN g.movies m
-            WHERE g.name = :name
-            ORDER BY g.name DESC
+            LEFT JOIN g.movies m
+            WHERE g.id = :id
+            ORDER BY g.id DESC
             "
-        )->setParameter(':name', $name);
+        )->setParameter(':id', $id);
 
         dump($query->getSQL());
 
@@ -42,7 +41,7 @@ class GenreRepository extends ServiceEntityRepository
         // $query = $qb->getQuery();
 
 
-        return $query->getResult();
+        return $query->getOneOrNullResult();
     }
     
     // /**

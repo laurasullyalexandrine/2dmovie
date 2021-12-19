@@ -50,6 +50,7 @@ class Casting
     /**
      * @ORM\ManyToMany(targetEntity=Person::class, inversedBy="castings")
      * @ORM\JoinColumn(nullable=true)
+     * @Ignore()
      */
     private $person;
 

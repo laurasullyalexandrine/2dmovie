@@ -3,7 +3,9 @@
 {% block title %} Détails du film {{ movie.title }}{% endblock %}
 {% block menu_movie %} active {% endblock %}
 {% block body %}
-
+<pre>
+    {{ dump(movie) }}
+</pre>
 <section class="home-bloc-movie-picture-show">
     <div class="home-movie_picture"><img class ="home-bloc-movie-picture"src="{{asset('uploads/' ~ movie.picture) }}" width="310px" height="450px" alt="picture_movie"></a></div>
             

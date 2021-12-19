@@ -3,14 +3,16 @@
 {% block title %}Détails des genres{% endblock %}
 {% block menu_genre %} active {% endblock %}
 {% block body %}
-
+<pre>
+    {{ dump(genre) }}
+</pre>
 <section class="container-admin">
     <div>
         <h2 class="entitled">Genre : <span class="movie">{{genre.name}}</span></h2>
         <h3 class="subtitle">Liste des films associés</h3>
 
 {% for movie in genre.movies %}
-<li class="category">{{ movie.title }}</li>
+<li class="category">{{movie.title}}</li>
 {# afficher la liste des movies associer au genre (movie.id) et movie.title #}
  {% endfor %} 
     <div class="admin-footer">

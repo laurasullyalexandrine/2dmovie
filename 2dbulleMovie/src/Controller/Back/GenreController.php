@@ -57,10 +57,10 @@ class GenreController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/genre/{id}', name: 'admin_genre_read')]
+    #[Route('/admin/genre/{id}', name: 'admin_genre_read', methods:['GET'])]
     public function read(Genre $genre): Response // Genre $genre est équivalent à $genre =new Genre:: class avec getDoc et getManger 
     {
-        dump($genre);
+       dump($genre);
         // ici on est sur de récup un objet car le param convert renvoit une 404 dans le cas contraire
         return $this->render('back/genre/read.html.twig', [
             'genre' => $genre,

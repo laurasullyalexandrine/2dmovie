@@ -4,13 +4,20 @@
 {% block menu_casting %} active {% endblock %}
 
 {% block body %}
-
+<pre>
+    {{ dump(casting) }}
+</pre>
 <section class="container-admin">
     <div>
         <h2 class="entitled"> {{casting.personage}}</h2>
-        <h3 class="subtitle">Liste des films associés</h3>
 
+        <h3 class="subtitle">Liste des films associés</h3>
         <li class="category">{{casting.movie.title}}</li>
+
+        <h3 class="subtitle">Liste des rôles associés</h3>
+        {% for person in casting.person %}
+        <li class="category">{{person.name}}</li>
+        {% endfor %}
 
 {# afficher la liste des movies associer au casting (movie.id) et movie.title #}
  

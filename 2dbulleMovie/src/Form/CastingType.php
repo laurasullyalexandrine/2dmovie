@@ -37,7 +37,10 @@ class CastingType extends AbstractType
             ])
             // ->add('createdAt')
             // ->add('updatedAt')
-            // ->add('person')
+            ->add('person', null, [
+                'label' => 'Rôles associés : ',
+                'expanded' => true,
+            ])
             
             ->add('movie', EntityType::class, [
                 'label' => 'Titre du film : ',
