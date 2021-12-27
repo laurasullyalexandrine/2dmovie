@@ -31,7 +31,7 @@ class GenreRepository extends ServiceEntityRepository
             "
         )->setParameter(':id', $id);
 
-        dump($query->getSQL());
+        // dump($query->getSQL());
 
         // $qb = $this->createQueryBuilder('g');
         // $qb->orderBy('g.name', 'DESC');

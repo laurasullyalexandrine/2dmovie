@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CastingController extends AbstractController
 {
-    #[Route('/admin/casting', name: 'admin_casting')]
+    #[Route('/admin/liste-casting', name: 'admin_casting')]
     public function browse(CastingRepository $castingRepository): Response
     {
         $allCast = $castingRepository->findBy([], ['personage' => 'ASC']);
@@ -22,7 +22,7 @@ class CastingController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/casting/new', name: 'admin_casting_add', methods: ['GET', 'POST'])]
+    #[Route('/admin/creer-un-cast/nouveau', name: 'admin_casting_add', methods: ['GET', 'POST'])]
     public function add(Request $request): Response
     {
         $casting = new Casting();
@@ -48,15 +48,16 @@ class CastingController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/casting/{id}', name: 'admin_casting_read', methods: ['GET'])]
+    #[Route('/admin/consulter-votre-cast/{id}', name: 'admin_casting_read', methods: ['GET'])]
     public function read(Casting $casting): Response
     {
+        dump($casting);
         return $this->render('Back/casting/read.html.twig', [
             'casting' => $casting,
         ]);
     }
 
-    #[Route('/admin/casting/edit/{id}', name: 'admin_casting_edit', methods: ['GET', 'POST'])]
+    #[Route('/admin/casting/editer-votre-cast/{id}', name: 'admin_casting_edit', methods: ['GET', 'POST'])]
     public function edit(Casting $casting, Request $request): Response
     {
         $form = $this->createForm(CastingType::class, $casting);
@@ -80,7 +81,7 @@ class CastingController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/casting/delete/{id}', name: 'admin_casting_delete', methods: ['GET'])]
+    #[Route('/admin/casting/surpprimer-votre-cast/{id}', name: 'admin_casting_delete', methods: ['GET'])]
     public function delete(Casting $casting, EntityManagerInterface $entityManagerInterface): Response
     {
         $entityManagerInterface->remove($casting);

@@ -19,6 +19,20 @@ class CastingRepository extends ServiceEntityRepository
         parent::__construct($registry, Casting::class);
     }
 
+    public function findOneByMoviePerson($id)
+    {
+        $entityManager = $this->getEntityManager();
+        $query = $entityManager->createQuery("
+        SELECT c, m, p
+        FROM App\Entity\Casting c
+        LEFT JOIN c.movie m
+        LEFT JOIN c.person p
+        WHERE c.id = :id
+        ORDER BY c.personage DESC
+        ")->setParameter(':id', $id);
+
+        return $query->getOneOrNullResult();
+    }
     // /**
     //  * @return Casting[] Returns an array of Casting objects
     //  */

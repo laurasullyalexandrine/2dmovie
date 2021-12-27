@@ -6,7 +6,7 @@ use App\Repository\PersonRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Serializer\Annotation\Ignore;
 /**
  * @ORM\Entity(repositoryClass=PersonRepository::class)
  */
@@ -36,6 +36,7 @@ class Person
 
     /**
      * @ORM\ManyToMany(targetEntity=Casting::class, mappedBy="person")
+     * @Ignore()
      */
     private $castings;
 

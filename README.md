@@ -5,7 +5,7 @@
 avec un contrôle d'accès.
 
 ## Projet
-C'est une projet créé entière avec le framework Symfony 5.3.
+Projet créé entièrement sous le framework Symfony 5.3
 
 ## Les entités
  Il y  aura 5 entités :
