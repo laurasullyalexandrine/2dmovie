@@ -59,7 +59,7 @@ class Movie
      */
     private $castings;
 
-
+    
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();
